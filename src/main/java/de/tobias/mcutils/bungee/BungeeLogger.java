@@ -6,8 +6,6 @@ import net.md_5.bungee.api.ProxyServer;
 @SuppressWarnings("unused")
 public class BungeeLogger extends Logger {
 
-    Boolean debug = false;
-
     public BungeeLogger(String pPrefix) {
         super(pPrefix);
     }

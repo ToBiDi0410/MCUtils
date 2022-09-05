@@ -6,8 +6,6 @@ import org.bukkit.Bukkit;
 @SuppressWarnings("unused")
 public class BukkitLogger extends Logger {
 
-    Boolean debug = false;
-
     public BukkitLogger(String pPrefix) {
         super(pPrefix);
     }

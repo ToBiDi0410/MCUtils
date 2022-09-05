@@ -6,6 +6,7 @@ public abstract class Logger {
     public static Logger instance = null;
 
     public String prefix;
+    public Boolean debug = false;
 
     public Logger(String pPrefix) {
         prefix = pPrefix;

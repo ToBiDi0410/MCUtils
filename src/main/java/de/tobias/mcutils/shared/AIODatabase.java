@@ -93,6 +93,7 @@ public class AIODatabase {
 
     public boolean execute(String sql) {
         sql = format(sql);
+        logger.debug("EXECUTE: " + sql);
         try {
             PreparedStatement exec = conn.prepareStatement(sql);
             exec.execute();
@@ -107,6 +108,7 @@ public class AIODatabase {
 
     public ResultSet query(String sql) {
         sql = format(sql);
+        logger.debug("QUERY: " + sql);
         try {
             PreparedStatement exec = conn.prepareStatement(sql);
             return exec.executeQuery();

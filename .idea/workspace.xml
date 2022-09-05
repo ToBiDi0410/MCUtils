@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b935fee-e953-4ecb-8670-617eec17549e" name="Changes" comment="Add some GUI related things">
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/bukkit/ItemBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/bukkit/gui/ConfirmGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/bukkit/gui/SimpleIFGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/Resultable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/bukkit/BukkitLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/bukkit/BukkitLogger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/bungee/BungeeLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/bungee/BungeeLogger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/AIODatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/AIODatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/templates/Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/templates/Logger.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +65,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662375492147</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Add some GUI related things">
+      <created>1662378006357</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1662378006357</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
