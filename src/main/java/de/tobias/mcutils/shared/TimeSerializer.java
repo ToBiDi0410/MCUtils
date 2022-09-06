@@ -20,6 +20,7 @@ public class TimeSerializer {
     public String SECONDS = "seconds";
     public String SECOND = "second";
     public String PERMANENT = "PERMANENT";
+    public String AGO = "ago";
 
     long rawValue = 0;
     long seconds = 0;
@@ -91,10 +92,10 @@ public class TimeSerializer {
     }
 
     public String toAgo() {
-        if(weeks > 0) return weeks + " " + (weeks > 1 ? WEEKS : WEEK);
-        if(days > 0) return days + " " + (days > 1 ? DAYS : DAY);
-        if(hours > 0) return hours + " " + (hours > 1 ? HOURS : HOUR);
-        if(minutes > 0) return minutes + " " + (minutes > 1 ? MINUTES : MINUTE);
-        return seconds + " " + (seconds > 1 ? SECONDS : SECOND);
+        if(weeks > 0) return weeks + " " + (weeks > 1 ? WEEKS : WEEK) + " " + AGO;
+        if(days > 0) return days + " " + (days > 1 ? DAYS : DAY) + " " + AGO;
+        if(hours > 0) return hours + " " + (hours > 1 ? HOURS : HOUR) + " " + AGO;
+        if(minutes > 0) return minutes + " " + (minutes > 1 ? MINUTES : MINUTE) + " " + AGO;
+        return seconds + " " + (seconds > 1 ? SECONDS : SECOND) + " " + AGO;
     }
 }
