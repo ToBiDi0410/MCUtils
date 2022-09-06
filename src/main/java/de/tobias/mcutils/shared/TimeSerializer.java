@@ -30,6 +30,7 @@ public class TimeSerializer {
 
     public TimeSerializer(Long millis) {
         rawValue = millis;
+        calculateTimes();
     }
 
     public void calculateTimes() {
@@ -49,39 +50,51 @@ public class TimeSerializer {
 
     public String toWDHMS() {
         if(rawValue < 0) return PERMANENT;
-        calculateTimes();
         StringBuilder res = new StringBuilder();
 
         if(weeks > 0) {
             res.append(weeks);
+            res.append(" ");
             res.append(weeks > 1 ? WEEKS : WEEK);
             res.append(" ");
         }
 
         if(days > 0) {
             res.append(days);
+            res.append(" ");
             res.append(days > 1 ? DAYS : DAY);
             res.append(" ");
         }
 
         if(hours > 0) {
             res.append(hours);
+            res.append(" ");
             res.append(hours > 1 ? HOURS : HOUR);
             res.append(" ");
         }
 
         if(minutes > 0) {
             res.append(minutes);
+            res.append(" ");
             res.append(minutes > 1 ? MINUTES : MINUTE);
             res.append(" ");
         }
 
         if(seconds > 0) {
             res.append(seconds);
+            res.append(" ");
             res.append(seconds > 1 ? SECONDS : SECOND);
             res.append(" ");
         }
 
         return res.toString().trim();
+    }
+
+    public String toAgo() {
+        if(weeks > 0) return weeks + " " + (weeks > 1 ? WEEKS : WEEK);
+        if(days > 0) return days + " " + (days > 1 ? DAYS : DAY);
+        if(hours > 0) return hours + " " + (hours > 1 ? HOURS : HOUR);
+        if(minutes > 0) return minutes + " " + (minutes > 1 ? MINUTES : MINUTE);
+        return seconds + " " + (seconds > 1 ? SECONDS : SECOND);
     }
 }
