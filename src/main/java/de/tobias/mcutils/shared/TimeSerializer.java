@@ -1,5 +1,6 @@
 package de.tobias.mcutils.shared;
 
+@SuppressWarnings("unused")
 public class TimeSerializer {
 
     public final static long ONE_SECOND = 1000;
