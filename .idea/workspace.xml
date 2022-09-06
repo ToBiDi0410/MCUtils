@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b935fee-e953-4ecb-8670-617eec17549e" name="Changes" comment="Add some GUI related things">
+    <list default="true" id="1b935fee-e953-4ecb-8670-617eec17549e" name="Changes" comment="Add time serializer">
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/TimeSerializer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/bukkit/BukkitLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/bukkit/BukkitLogger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/bungee/BungeeLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/bungee/BungeeLogger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/AIODatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/AIODatabase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/templates/Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/templates/Logger.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,14 +32,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Project.color": "2e3f48",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="de.tobias.mcutils.bukkit.gui" />
@@ -72,7 +70,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662378006357</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Improve Debug">
+      <created>1662380236153</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1662380236153</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -89,6 +94,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add basic files" />
     <MESSAGE value="Add some GUI related things" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add some GUI related things" />
+    <MESSAGE value="Improve Debug" />
+    <MESSAGE value="Add time serializer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add time serializer" />
   </component>
 </project>
