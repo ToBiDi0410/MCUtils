@@ -9,6 +9,9 @@ public class BukkitLogger extends Logger {
     public BukkitLogger(String pPrefix) {
         super(pPrefix);
     }
+    public BukkitLogger(String pPrefix, Logger logger) {
+        super(pPrefix, logger);
+    }
 
     @Override
     public void info(String msg) {

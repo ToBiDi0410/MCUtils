@@ -32,7 +32,7 @@ public class DatabaseObjectTable<ContentType> {
         name = pName;
         objectClass = pObjectClass;
         database = db;
-        logger = RuntimeDetector.isBukkit() ? new BukkitLogger("§7[§bTABLE:§6" + name + "§7]" + baseLogger) : new BungeeLogger("§7[§bTABLE:§6" + name + "§7]" + baseLogger);
+        logger = RuntimeDetector.isBukkit() ? new BukkitLogger("§7[§bTABLE:§6" + name + "§7]", baseLogger) : new BungeeLogger("§7[§bTABLE:§6" + name + "§7]", baseLogger);
     }
 
     public void init() {

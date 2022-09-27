@@ -9,6 +9,9 @@ public class BungeeLogger extends Logger {
     public BungeeLogger(String pPrefix) {
         super(pPrefix);
     }
+    public BungeeLogger(String pPrefix, Logger logger) {
+        super(pPrefix, logger);
+    }
 
     @Override
     public void info(String msg) {
