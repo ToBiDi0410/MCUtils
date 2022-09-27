@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b935fee-e953-4ecb-8670-617eec17549e" name="Changes" comment="Fix Itembuilder Lore">
+    <list default="true" id="1b935fee-e953-4ecb-8670-617eec17549e" name="Changes" comment="Fix Itembuilder Lore (again)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/bukkit/ItemBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/bukkit/ItemBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/TimeSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/TimeSerializer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +137,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664299819695</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Fix Itembuilder Lore (again)">
+      <created>1664299857554</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1664299857554</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -163,6 +170,7 @@
     <MESSAGE value="Fix Loggers" />
     <MESSAGE value="Fix DatabaseObjectTable Prefix" />
     <MESSAGE value="Fix Itembuilder Lore" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix Itembuilder Lore" />
+    <MESSAGE value="Fix Itembuilder Lore (again)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix Itembuilder Lore (again)" />
   </component>
 </project>

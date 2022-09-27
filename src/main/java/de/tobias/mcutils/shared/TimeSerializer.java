@@ -42,11 +42,11 @@ public class TimeSerializer {
         days = 0;
         weeks = 0;
 
-        while(rawStored > 1000) { seconds++; rawStored-=1000; };
-        while(seconds > 60) { minutes++; seconds-=60; };
-        while(minutes > 60) { hours++; minutes-=60; };
-        while(hours > 24) { days++; hours-=24; };
-        while(days > 7) { weeks++; days-=7; };
+        while(rawStored >= ONE_SECOND) { seconds++; rawStored-=ONE_SECOND; };
+        while(seconds >= ONE_MINUTE) { minutes++; seconds-=ONE_MINUTE; };
+        while(minutes >= ONE_HOUR) { hours++; minutes-=ONE_HOUR; };
+        while(hours >= ONE_DAY) { days++; hours-=ONE_DAY; };
+        while(days >= ONE_WEEK) { weeks++; days-=ONE_WEEK; };
     }
 
     public String toWDHMS() {
