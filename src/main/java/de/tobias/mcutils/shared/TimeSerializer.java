@@ -4,10 +4,10 @@ package de.tobias.mcutils.shared;
 public class TimeSerializer {
 
     public final static long ONE_SECOND = 1000;
-    public final static long ONE_MINUTE = ONE_SECOND * 60;
-    public final static long ONE_HOUR = ONE_MINUTE * 60;
-    public final static long ONE_DAY = ONE_HOUR * 24;
-    public final static long ONE_WEEK = ONE_DAY * 7;
+    public final static long ONE_MINUTE = 60;
+    public final static long ONE_HOUR = 60;
+    public final static long ONE_DAY = 24;
+    public final static long ONE_WEEK = 7;
 
     public String WEEKS = "weeks";
     public String WEEK = "week";
