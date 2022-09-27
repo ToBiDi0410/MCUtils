@@ -13,6 +13,10 @@ public abstract class Logger {
         instance = this;
     }
 
+    public Logger(String pPrefix, Logger logger) {
+        prefix = logger.prefix + pPrefix;
+    }
+
     public abstract void info(String msg);
     public abstract void warn(String msg);
     public abstract void error(String msg);
