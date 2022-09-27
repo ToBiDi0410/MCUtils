@@ -39,7 +39,7 @@ public class ItemBuilder {
 
     public ItemBuilder addLore(String lore) {
         ItemMeta im = is.getItemMeta();
-        List<String> loreA = im.getLore();
+        List<String> loreA = im.getLore() == null ? new ArrayList<String>() : im.getLore();
         loreA.add(lore);
         im.setLore(loreA);
         is.setItemMeta(im);

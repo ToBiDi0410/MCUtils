@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b935fee-e953-4ecb-8670-617eec17549e" name="Changes" comment="Fix DatabaseObjectTable Prefix">
+    <list default="true" id="1b935fee-e953-4ecb-8670-617eec17549e" name="Changes" comment="Fix Itembuilder Lore">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/bukkit/ItemBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/bukkit/ItemBuilder.java" afterDir="false" />
     </list>
@@ -130,7 +130,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664297375614</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Fix Itembuilder Lore">
+      <created>1664299819695</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1664299819695</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -155,6 +162,7 @@
     <MESSAGE value="Add DatabaseObjectTables" />
     <MESSAGE value="Fix Loggers" />
     <MESSAGE value="Fix DatabaseObjectTable Prefix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix DatabaseObjectTable Prefix" />
+    <MESSAGE value="Fix Itembuilder Lore" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix Itembuilder Lore" />
   </component>
 </project>
