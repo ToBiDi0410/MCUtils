@@ -20,7 +20,7 @@ public class BungeeLogger extends Logger {
 
     @Override
     public void warn(String msg) {
-        ProxyServer.getInstance().getConsole().sendMessage(BungeeMigrationHelpers.parseLegacyText(prefix + "§7[§6WARN§7] §e" + msg.replaceAll("§x", "§7")));
+        ProxyServer.getInstance().getConsole().sendMessage(BungeeMigrationHelpers.parseLegacyText(prefix + "§7[§6WARN§7] §e" + msg.replaceAll("§x", "§e")));
     }
 
     @Override

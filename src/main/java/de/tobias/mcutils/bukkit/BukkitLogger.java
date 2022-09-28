@@ -20,7 +20,7 @@ public class BukkitLogger extends Logger {
 
     @Override
     public void warn(String msg) {
-        Bukkit.getConsoleSender().sendMessage(prefix + "§7[§6WARN§7] §e" + msg.replaceAll("§x", "§7"));
+        Bukkit.getConsoleSender().sendMessage(prefix + "§7[§6WARN§7] §e" + msg.replaceAll("§x", "§e"));
     }
 
     @Override
