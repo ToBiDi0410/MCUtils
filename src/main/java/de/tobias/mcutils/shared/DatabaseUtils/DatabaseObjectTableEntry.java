@@ -5,9 +5,9 @@ import java.util.UUID;
 @SuppressWarnings("unused")
 public class DatabaseObjectTableEntry<ContentType> {
 
-    private String id;
-    private DatabaseObjectTable<ContentType> table;
-    private Object data;
+    private transient String id;
+    private transient DatabaseObjectTable<ContentType> table;
+    private transient Object data;
 
     public DatabaseObjectTableEntry() {
         id = UUID.randomUUID().toString();
