@@ -41,18 +41,21 @@ public class DatabaseObjectTable<ContentType> {
         for(Field field : objectClass.getDeclaredFields()) {
             if(!Modifier.isTransient(field.getModifiers()) && !Modifier.isFinal(field.getModifiers()) && !Modifier.isStatic(field.getModifiers())) {
                 if(field.getType() == int.class) logger.warn("Use of primitive 'int' is not allowed inside DatabaseObjects");
-                if(field.getType() == boolean.class) logger.warn("Use of primitive 'boolean' is not allowed inside DatabaseObjects");
-                if(field.getType() == float.class) logger.warn("Use of primitive 'float' is not allowed inside DatabaseObjects");
-                if(field.getType() == long.class) logger.warn("Use of primitive 'long' is not allowed inside DatabaseObjects");
-                if(field.getType() == double.class) logger.warn("Use of primitive 'double' is not allowed inside DatabaseObjects");
-                if(field.getType() == Integer.class) fields.put(field.getName().toUpperCase(), Integer.class);
-                if(field.getType() == Float.class) fields.put(field.getName().toUpperCase(), Float.class);
-                if(field.getType() == Boolean.class) fields.put(field.getName().toUpperCase(), Boolean.class);
-                if(field.getType() == Long.class) fields.put(field.getName().toUpperCase(), Long.class);
-                if(field.getType() == Double.class) fields.put(field.getName().toUpperCase(), Double.class);
-                if(field.getType() == String.class) fields.put(field.getName().toUpperCase(), String.class);
-                if(field.getType() == UUID.class) fields.put(field.getName().toUpperCase(), UUID.class);
-                if(field.getType() == BigInteger.class) fields.put(field.getName().toUpperCase(), BigInteger.class);
+                else if(field.getType() == boolean.class) logger.warn("Use of primitive 'boolean' is not allowed inside DatabaseObjects");
+                else if(field.getType() == float.class) logger.warn("Use of primitive 'float' is not allowed inside DatabaseObjects");
+                else if(field.getType() == long.class) logger.warn("Use of primitive 'long' is not allowed inside DatabaseObjects");
+                else if(field.getType() == double.class) logger.warn("Use of primitive 'double' is not allowed inside DatabaseObjects");
+                else if(field.getType() == Integer.class) fields.put(field.getName().toUpperCase(), Integer.class);
+                else if(field.getType() == Float.class) fields.put(field.getName().toUpperCase(), Float.class);
+                else if(field.getType() == Boolean.class) fields.put(field.getName().toUpperCase(), Boolean.class);
+                else if(field.getType() == Long.class) fields.put(field.getName().toUpperCase(), Long.class);
+                else if(field.getType() == Double.class) fields.put(field.getName().toUpperCase(), Double.class);
+                else if(field.getType() == String.class) fields.put(field.getName().toUpperCase(), String.class);
+                else if(field.getType() == UUID.class) fields.put(field.getName().toUpperCase(), UUID.class);
+                else if(field.getType() == BigInteger.class) fields.put(field.getName().toUpperCase(), BigInteger.class);
+                else logger.debug("Ignoring field '" + field.getName() + "' because of type");
+            } else {
+                logger.debug("Ignoring field '" + field.getName() + "' because of modifiers");
             }
         }
 
