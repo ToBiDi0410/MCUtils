@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b935fee-e953-4ecb-8670-617eec17549e" name="Changes" comment="Add JSON Serializer and fix Loggers">
+    <list default="true" id="1b935fee-e953-4ecb-8670-617eec17549e" name="Changes" comment="Remove the JSON Serializer because it was broken and fix some things">
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/BigNumberFormatter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/NumberUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/DatabaseUtils/DatabaseObjectTableEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/DatabaseUtils/DatabaseObjectTableEntry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +167,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664385731120</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Remove the JSON Serializer because it was broken and fix some things">
+      <created>1664442984178</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1664442984178</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -195,6 +204,7 @@
     <MESSAGE value="Improve TimeSerializer" />
     <MESSAGE value="Fix TimeSerializer" />
     <MESSAGE value="Add JSON Serializer and fix Loggers" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add JSON Serializer and fix Loggers" />
+    <MESSAGE value="Remove the JSON Serializer because it was broken and fix some things" />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove the JSON Serializer because it was broken and fix some things" />
   </component>
 </project>
