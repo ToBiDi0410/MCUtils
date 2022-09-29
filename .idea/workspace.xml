@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b935fee-e953-4ecb-8670-617eec17549e" name="Changes" comment="Add BigInteger to SQL">
+    <list default="true" id="1b935fee-e953-4ecb-8670-617eec17549e" name="Changes" comment="Further Improvements to the DatabaseObjectTable">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/DatabaseUtils/DatabaseObjectTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/DatabaseUtils/DatabaseObjectTable.java" afterDir="false" />
     </list>
@@ -207,7 +207,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664456150930</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Further Improvements to the DatabaseObjectTable">
+      <created>1664456418166</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1664456418166</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -242,6 +249,7 @@
     <MESSAGE value="Fix some number formatters" />
     <MESSAGE value="IDK why this didn't work" />
     <MESSAGE value="Add BigInteger to SQL" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add BigInteger to SQL" />
+    <MESSAGE value="Further Improvements to the DatabaseObjectTable" />
+    <option name="LAST_COMMIT_MESSAGE" value="Further Improvements to the DatabaseObjectTable" />
   </component>
 </project>

@@ -9,6 +9,7 @@ import de.tobias.mcutils.templates.Logger;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.sql.ResultSet;
 import java.util.*;
@@ -53,6 +54,7 @@ public class DatabaseObjectTable<ContentType> {
                 else if(field.getType() == String.class) fields.put(field.getName().toUpperCase(), String.class);
                 else if(field.getType() == UUID.class) fields.put(field.getName().toUpperCase(), UUID.class);
                 else if(field.getType() == BigInteger.class) fields.put(field.getName().toUpperCase(), BigInteger.class);
+                else if(field.getType() == BigDecimal.class) fields.put(field.getName().toUpperCase(), BigDecimal.class);
                 else logger.debug("Ignoring field '" + field.getName() + "' because of type");
             } else {
                 logger.debug("Ignoring field '" + field.getName() + "' because of modifiers");
@@ -128,6 +130,7 @@ public class DatabaseObjectTable<ContentType> {
                         else if (fields.get(fieldName) == Boolean.class) field.set(entry, rs.getBoolean(fieldName));
                         else if (fields.get(fieldName) == UUID.class) field.set(entry, UUID.fromString(rs.getString(fieldName)));
                         else if (fields.get(fieldName) == BigInteger.class) field.set(entry, new BigInteger(rs.getString(fieldName)));
+                        else if (fields.get(fieldName) == BigDecimal.class) field.set(entry, new BigDecimal(rs.getString(fieldName)));
                         else field.set(entry, rs.getObject(fieldName));
                     }
                 }
@@ -194,6 +197,7 @@ public class DatabaseObjectTable<ContentType> {
         if(c == Double.class) return "DOUBLE";
         if(c == UUID.class) return "TEXT";
         if(c == BigInteger.class) return "BIGINT";
+        if(c == BigDecimal.class) return "TEXT";
         return "TEXT";
     }
 
