@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b935fee-e953-4ecb-8670-617eec17549e" name="Changes" comment="Add some number formatters">
+    <list default="true" id="1b935fee-e953-4ecb-8670-617eec17549e" name="Changes" comment="Fix some number formatters">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/BigNumberFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/BigNumberFormatter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,7 +185,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664452737962</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Fix some number formatters">
+      <created>1664453146061</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1664453146061</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -218,6 +224,7 @@
     <MESSAGE value="Add JSON Serializer and fix Loggers" />
     <MESSAGE value="Remove the JSON Serializer because it was broken and fix some things" />
     <MESSAGE value="Add some number formatters" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add some number formatters" />
+    <MESSAGE value="Fix some number formatters" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix some number formatters" />
   </component>
 </project>
