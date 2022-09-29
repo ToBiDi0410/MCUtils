@@ -11,6 +11,7 @@ public class BigNumberFormatter {
     public int THOUSAND_DECIMALS = 2;
     public int MILLION_DECIMALS = 3;
     public int BILLION_DECIMALS = 5;
+    public int NORMAL_DECIMALS = 5;
 
     public BigNumberFormatter() {}
 
@@ -31,7 +32,7 @@ public class BigNumberFormatter {
         if (number >= 1000 * 1000)
             return NumberUtils.stringRoundDouble(number / (1000.0 * 1000), MILLION_DECIMALS) + MILLION_SHORT;
         if (number >= 1000) return NumberUtils.stringRoundDouble(number / (1000.0), THOUSAND_DECIMALS) + THOUSAND_SHORT;
-        return number.toString();
+        return NumberUtils.stringRoundDouble(number/1.0, NORMAL_DECIMALS);
     }
 
     public String formatInteger(Integer number) {
@@ -41,7 +42,7 @@ public class BigNumberFormatter {
         if (number >= 1000 * 1000)
             return NumberUtils.stringRoundDouble(number / (1000.0 * 1000), MILLION_DECIMALS) + MILLION_SHORT;
         if (number >= 1000) return NumberUtils.stringRoundDouble(number / (1000.0), THOUSAND_DECIMALS) + THOUSAND_SHORT;
-        return number.toString();
+        return NumberUtils.stringRoundDouble(number/1.0, NORMAL_DECIMALS);
     }
 
     public String formatBigDecimal(BigDecimal number) {
@@ -50,6 +51,6 @@ public class BigNumberFormatter {
         if (number.longValue() >= 1000 * 1000)
             return NumberUtils.stringRoundDouble(number.divide(new BigDecimal(1000000)).doubleValue(), MILLION_DECIMALS) + MILLION_SHORT;
         if (number.longValue() >= 1000) return NumberUtils.stringRoundDouble(number.divide(new BigDecimal(1000)).doubleValue(), THOUSAND_DECIMALS) + THOUSAND_SHORT;
-        return number.toString();
+        return NumberUtils.stringRoundDouble(number.doubleValue(), NORMAL_DECIMALS);
     }
 }
