@@ -9,6 +9,7 @@ import de.tobias.mcutils.templates.Logger;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import java.math.BigInteger;
 import java.sql.ResultSet;
 import java.util.*;
 
@@ -51,6 +52,7 @@ public class DatabaseObjectTable<ContentType> {
                 if(field.getType() == Double.class) fields.put(field.getName().toUpperCase(), Double.class);
                 if(field.getType() == String.class) fields.put(field.getName().toUpperCase(), String.class);
                 if(field.getType() == UUID.class) fields.put(field.getName().toUpperCase(), UUID.class);
+                if(field.getType() == BigInteger.class) fields.put(field.getName().toUpperCase(), BigInteger.class);
             }
         }
 
@@ -117,12 +119,12 @@ public class DatabaseObjectTable<ContentType> {
                     if (fields.containsKey(fieldName)) {
                         Class fieldClass = fields.get(fieldName);
                         field.setAccessible(true);
-
                         if (fields.get(fieldName) == Long.class) field.set(entry, rs.getLong(fieldName));
                         else if (fields.get(fieldName) == Double.class) field.set(entry, rs.getDouble(fieldName));
                         else if (fields.get(fieldName) == Float.class) field.set(entry, rs.getFloat(fieldName));
                         else if (fields.get(fieldName) == Boolean.class) field.set(entry, rs.getBoolean(fieldName));
                         else if (fields.get(fieldName) == UUID.class) field.set(entry, UUID.fromString(rs.getString(fieldName)));
+                        else if (fields.get(fieldName) == BigInteger.class) field.set(entry, new BigInteger(rs.getString(fieldName)));
                         else field.set(entry, rs.getObject(fieldName));
                     }
                 }
@@ -188,12 +190,14 @@ public class DatabaseObjectTable<ContentType> {
         if(c == Float.class) return "FLOAT";
         if(c == Double.class) return "DOUBLE";
         if(c == UUID.class) return "TEXT";
+        if(c == BigInteger.class) return "BIGINT";
         return "TEXT";
     }
 
     public static String ObjectToSQLParameter(Object o) {
         if(o == null) return "null";
         if(o.getClass() == String.class) return "'" + o + "'";
+        if(o.getClass() == BigInteger.class) return ((BigInteger) o).longValue() + "";
         return o.toString();
     }
 }
