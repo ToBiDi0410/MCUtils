@@ -76,7 +76,7 @@ public class BungeeStaticClassSerializer extends StaticClassSerializer {
         Field[] attributes = toSerialize.getDeclaredFields();
         for(Field field : attributes) {
             if(Modifier.isPublic(field.getModifiers())) {
-                if(field.getType() == String.class || field.getType() == Integer.class || field.getType() == Boolean.class || field.getType() == ArrayList.class) {
+                if(field.getType() == String.class || field.getType() == Integer.class || field.getType() == Boolean.class || field.getType() == ArrayList.class || field.getType() == Float.class || field.getType() == Double.class || field.getType() == Long.class) {
                     try {
                         configuration.set(field.getName(), field.get(null));
                     } catch (Exception ex) {
