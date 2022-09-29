@@ -1,5 +1,7 @@
 package de.tobias.mcutils.shared;
 
+import java.math.BigDecimal;
+
 public class BigNumberFormatter {
 
     public String THOUSAND_SHORT = "k";
@@ -39,6 +41,15 @@ public class BigNumberFormatter {
         if (number >= 1000 * 1000)
             return NumberUtils.stringRoundDouble(number / (1000.0 * 1000), MILLION_DECIMALS) + MILLION_SHORT;
         if (number >= 1000) return NumberUtils.stringRoundDouble(number / (1000.0), THOUSAND_DECIMALS) + THOUSAND_SHORT;
+        return number.toString();
+    }
+
+    public String formatBigDecimal(BigDecimal number) {
+        if (number.longValue() >= 1000 * 1000 * 1000)
+            return NumberUtils.stringRoundDouble(number.divide(new BigDecimal("1000000000")).doubleValue(), BILLION_DECIMALS) + BILLION_SHORT;
+        if (number.longValue() >= 1000 * 1000)
+            return NumberUtils.stringRoundDouble(number.divide(new BigDecimal(1000000)).doubleValue(), MILLION_DECIMALS) + MILLION_SHORT;
+        if (number.longValue() >= 1000) return NumberUtils.stringRoundDouble(number.divide(new BigDecimal(1000)).doubleValue(), THOUSAND_DECIMALS) + THOUSAND_SHORT;
         return number.toString();
     }
 }
