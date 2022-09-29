@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b935fee-e953-4ecb-8670-617eec17549e" name="Changes" comment="Add getOrderedByWithLimit to DatabaseObjectTable">
+    <list default="true" id="1b935fee-e953-4ecb-8670-617eec17549e" name="Changes" comment="Improve DatabaseObjectTable">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/DatabaseUtils/DatabaseObjectTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/DatabaseUtils/DatabaseObjectTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/bukkit/BukkitStaticClassSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/bukkit/BukkitStaticClassSerializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/bungee/BungeeStaticClassSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/bungee/BungeeStaticClassSerializer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,7 +229,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664462278558</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Improve DatabaseObjectTable">
+      <created>1664464843070</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1664464843070</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -266,6 +274,7 @@
     <MESSAGE value="Further Improvements to the DatabaseObjectTable" />
     <MESSAGE value="Add BigDecimal to DatabaseObjectTable" />
     <MESSAGE value="Add getOrderedByWithLimit to DatabaseObjectTable" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add getOrderedByWithLimit to DatabaseObjectTable" />
+    <MESSAGE value="Improve DatabaseObjectTable" />
+    <option name="LAST_COMMIT_MESSAGE" value="Improve DatabaseObjectTable" />
   </component>
 </project>

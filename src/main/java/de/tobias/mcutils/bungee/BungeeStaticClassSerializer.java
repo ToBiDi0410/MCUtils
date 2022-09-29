@@ -47,7 +47,13 @@ public class BungeeStaticClassSerializer extends StaticClassSerializer {
                             field.set(null, configuration.getInt(key));
                         } else if (field.getType() == Boolean.class) {
                             field.set(null, configuration.getBoolean(key));
-                        } else if (field.getType() == ArrayList.class) {
+                        } else if (field.getType() == Long.class) {
+                            field.set(null, configuration.getLong(key));
+                        } else if (field.getType() == Double.class) {
+                            field.set(null, configuration.getDouble(key));
+                        } else if (field.getType() == Float.class) {
+                            field.set(null, Double.valueOf(configuration.getDouble(key)).floatValue());
+                        }  else if (field.getType() == ArrayList.class) {
                             field.set(null, new ArrayList<>(configuration.getList(key)));
                         } else {
                             logger.warn("[" + configFile.getName() + "] Field cannot be loaded: " + field.getType() + " (UNKNOWN TYPE)");
