@@ -82,7 +82,7 @@ public class DatabaseObjectTable<ContentType> {
         if(!fields.containsKey(searchFieldName.toUpperCase())) throw new Error("Unknown field: " + searchFieldName);
         ArrayList<ContentType> entries = new ArrayList<>();
         try {
-            ResultSet rs = database.query("SELECT * FROM `" + name + "` WHERE `" + searchFieldName.toUpperCase() + "` = " + ObjectToSQLParameter(value) + ";");
+            ResultSet rs = database.query("SELECT `ID` FROM `" + name + "` WHERE `" + searchFieldName.toUpperCase() + "` = " + ObjectToSQLParameter(value) + ";");
             while(rs.next()) entries.add(getByID(rs.getString("ID")));
 
             if(cached.isPresent()) {
@@ -98,6 +98,18 @@ public class DatabaseObjectTable<ContentType> {
 
         } catch (Exception ex) {
             logger.error("Failed to get data from table by fields:");
+            ex.printStackTrace();
+        }
+        return entries;
+    }
+
+    public ArrayList<ContentType> getOrderedByWithLimit(String criteria, Integer count) {
+        ArrayList<ContentType> entries = new ArrayList<>();
+        try {
+            ResultSet rs = database.query("SELECT `ID` FROM `" + name + "` ORDER BY `" + criteria.toUpperCase() + "` DESC LIMIT " + count + ";");
+            while(rs.next()) entries.add(getByID(rs.getString("ID")));
+        } catch (Exception ex) {
+            logger.error("Failed to get data from table by criteria:");
             ex.printStackTrace();
         }
         return entries;
