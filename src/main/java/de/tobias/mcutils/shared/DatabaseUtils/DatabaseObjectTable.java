@@ -103,6 +103,43 @@ public class DatabaseObjectTable<ContentType> {
         return entries;
     }
 
+    public ArrayList<ContentType> getAll(Integer limit) {
+        String cachedName = "GETALL";
+        Optional<CachedObject> cached = cache.stream().filter((a) -> a.id.equalsIgnoreCase(cachedName)).findAny();
+        if(cached.isPresent()) {
+            if(cached.get().fetched >= lastUpdate) {
+                logger.debug("Took from cache: §6" + cachedName);
+                return (ArrayList<ContentType>) cached.get().data;
+            }
+        }
+
+        ArrayList<ContentType> entries = new ArrayList<>();
+        try {
+            ResultSet rs = database.query("SELECT `ID` FROM `" + name + "` LIMIT " + limit + ";");
+            while(rs.next()) entries.add(getByID(rs.getString("ID")));
+
+            if(cached.isPresent()) {
+                cached.get().fetched = System.currentTimeMillis();
+                cached.get().data = entries;
+            } else if(enableCaching) {
+                CachedObject newCachedObject = new CachedObject();
+                newCachedObject.id = cachedName;
+                newCachedObject.fetched = System.currentTimeMillis();
+                newCachedObject.data = entries;
+                cache.add(newCachedObject);
+            }
+
+        } catch (Exception ex) {
+            logger.error("Failed to all entries from table:");
+            ex.printStackTrace();
+        }
+        return entries;
+    }
+
+    public boolean updateFieldForAll(String fieldName, Object data) {
+        return database.execute("UPDATE `" + name + "` SET `" + fieldName.toUpperCase() + "` = " + ObjectToSQLParameter(data) + ";");
+    }
+
     public ArrayList<ContentType> getOrderedByWithLimit(String criteria, Integer count) {
         ArrayList<ContentType> entries = new ArrayList<>();
         try {
