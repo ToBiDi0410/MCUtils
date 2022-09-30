@@ -22,4 +22,8 @@ public class NumberUtils {
         df.setRoundingMode(RoundingMode.CEILING);
         return df.format(value);
     }
+
+    public static Integer getRandomSign() {
+        return Math.random() >= 0.5 ? 1 : -1;
+    }
 }
