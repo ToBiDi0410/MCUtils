@@ -2,6 +2,7 @@ package de.tobias.mcutils.bukkit;
 
 import de.tobias.mcutils.templates.Logger;
 import de.tobias.mcutils.templates.StaticClassSerializer;
+import org.bukkit.Location;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
@@ -49,6 +50,8 @@ public class BukkitStaticClassSerializer extends StaticClassSerializer {
                             field.set(null, configuration.getLong(key));
                         } else if (field.getType() == Double.class) {
                             field.set(null, configuration.getDouble(key));
+                        } else if (field.getType() == Location.class) {
+                            field.set(null, configuration.getLocation(key));
                         } else if (field.getType() == Float.class) {
                             field.set(null, Double.valueOf(configuration.getDouble(key)).floatValue());
                         }  else if (field.getType() == ArrayList.class) {
@@ -74,7 +77,7 @@ public class BukkitStaticClassSerializer extends StaticClassSerializer {
         Field[] attributes = toSerialize.getDeclaredFields();
         for(Field field : attributes) {
             if(Modifier.isPublic(field.getModifiers())) {
-                if(field.getType() == String.class || field.getType() == Integer.class || field.getType() == Boolean.class || field.getType() == ArrayList.class || field.getType() == Float.class || field.getType() == Double.class || field.getType() == Long.class) {
+                if(field.getType() == String.class || field.getType() == Integer.class || field.getType() == Boolean.class || field.getType() == Location.class || field.getType() == ArrayList.class || field.getType() == Float.class || field.getType() == Double.class || field.getType() == Long.class) {
                     try {
                         configuration.set(field.getName(), field.get(null));
                     } catch (Exception ex) {
