@@ -253,9 +253,7 @@ public class DatabaseObjectTable<ContentType> {
             }
 
             String fullSql = sqlStart.replaceAll("%ARGS%", sqlArgs.toString());
-            for(CachedObject obj : cache) {
-                if(obj.data == entry) cache.remove(obj);
-            }
+            cache.removeIf(obj -> obj.data == entry);
             if(refresh) lastUpdate = System.currentTimeMillis();
             return database.execute(fullSql);
         } catch (Exception ex) {
