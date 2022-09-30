@@ -240,11 +240,29 @@ public class DatabaseObjectTable<ContentType> {
         }
     }
 
-    public boolean update(ContentType entry) {
-        if(!drop(entry, false)) return false;
-        if(!insert(entry, false)) return false;
-        cache.removeIf(obj -> obj.data == entry);
-        return true;
+    public boolean update(DatabaseObjectTableEntry<ContentType> entry, Boolean refresh) {
+        try {
+            String sqlStart = "UPDATE `" + name + "` SET %ARGS%  WHERE `ID` = " + ObjectToSQLParameter(entry.getID()) + ";";
+            StringBuilder sqlArgs = new StringBuilder("`ID`=" + ObjectToSQLParameter(entry.getID()));
+
+            for(Field field : entry.getClass().getDeclaredFields()) {
+                if(fields.containsKey(field.getName().toUpperCase())) {
+                    field.setAccessible(true);
+                    sqlArgs.append(", `").append(field.getName().toUpperCase()).append("`").append("=").append(ObjectToSQLParameter(field.get(entry)));
+                }
+            }
+
+            String fullSql = sqlStart.replaceAll("%ARGS%", sqlArgs.toString());
+            for(CachedObject obj : cache) {
+                if(obj.data == entry) cache.remove(obj);
+            }
+            if(refresh) lastUpdate = System.currentTimeMillis();
+            return database.execute(fullSql);
+        } catch (Exception ex) {
+            logger.error("Failed to update object:");
+            ex.printStackTrace();
+            return false;
+        }
     }
 
     public boolean drop(ContentType entry) {

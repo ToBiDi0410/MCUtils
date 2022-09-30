@@ -25,7 +25,7 @@ public class DatabaseObjectTableEntry<ContentType> {
 
     public boolean save() {
         if(table == null) return false;
-        return table.update((ContentType) this);
+        return table.update(this, true);
     }
 
     public boolean create(DatabaseObjectTable<ContentType> pTable) {
