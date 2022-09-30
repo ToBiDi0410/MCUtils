@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b935fee-e953-4ecb-8670-617eec17549e" name="Changes" comment="Add Location support to BukkitStaticClassSerializer">
+    <list default="true" id="1b935fee-e953-4ecb-8670-617eec17549e" name="Changes" comment="Add random mathematical sign to NumberUtils">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/NumberUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/NumberUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/DatabaseUtils/DatabaseObjectTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/DatabaseUtils/DatabaseObjectTable.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -256,7 +256,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664534190519</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Add random mathematical sign to NumberUtils">
+      <created>1664535359659</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1664535359659</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -271,7 +278,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Improve Debug" />
     <MESSAGE value="Add time serializer" />
     <MESSAGE value="Suppress unused warning" />
     <MESSAGE value="Improve and fix time serializer" />
@@ -296,6 +302,7 @@
     <MESSAGE value="Add more supported Types to StaticClassSerializers" />
     <MESSAGE value="Fix mistakes in StaticClassSerializers" />
     <MESSAGE value="Add Location support to BukkitStaticClassSerializer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Location support to BukkitStaticClassSerializer" />
+    <MESSAGE value="Add random mathematical sign to NumberUtils" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add random mathematical sign to NumberUtils" />
   </component>
 </project>

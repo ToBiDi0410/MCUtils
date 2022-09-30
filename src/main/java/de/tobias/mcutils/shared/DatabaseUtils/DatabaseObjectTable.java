@@ -70,20 +70,28 @@ public class DatabaseObjectTable<ContentType> {
     }
 
     public ArrayList<ContentType> getAllByField(String searchFieldName, Object value) {
-        String cachedName = "MATCHFIELDVALUE|||" + searchFieldName + "|||" + value.toString();
+        ArrayList<ContentType> entries = new ArrayList<>();
+        for(String id : getAllIDsByField(searchFieldName, value)) {
+            entries.add(getByID(id));
+        }
+        return entries;
+    }
+
+    public ArrayList<String> getAllIDsByField(String searchFieldName, Object value) {
+        String cachedName = "MATCHFIELDVALUEID|||" + searchFieldName + "|||" + value.toString();
         Optional<CachedObject> cached = cache.stream().filter((a) -> a.id.equalsIgnoreCase(cachedName)).findAny();
         if(cached.isPresent()) {
             if(cached.get().fetched >= lastUpdate) {
                 logger.debug("Took from cache: §6" + cachedName);
-                return (ArrayList<ContentType>) cached.get().data;
+                return (ArrayList<String>) cached.get().data;
             }
         }
 
         if(!fields.containsKey(searchFieldName.toUpperCase())) throw new Error("Unknown field: " + searchFieldName);
-        ArrayList<ContentType> entries = new ArrayList<>();
+        ArrayList<String> entries = new ArrayList<>();
         try {
             ResultSet rs = database.query("SELECT `ID` FROM `" + name + "` WHERE `" + searchFieldName.toUpperCase() + "` = " + ObjectToSQLParameter(value) + ";");
-            while(rs.next()) entries.add(getByID(rs.getString("ID")));
+            while(rs.next()) entries.add(rs.getString("ID"));
 
             if(cached.isPresent()) {
                 cached.get().fetched = System.currentTimeMillis();
@@ -205,6 +213,10 @@ public class DatabaseObjectTable<ContentType> {
     }
 
     public boolean insert(ContentType entry) {
+        return insert(entry, true);
+    }
+
+    public boolean insert(ContentType entry, Boolean refresh) {
         try {
             String sqlStart = "INSERT INTO `" + name + "` (%FIELDS%) VALUES (%VALUES%)";
             StringBuilder sqlFields = new StringBuilder("`ID`");
@@ -219,7 +231,7 @@ public class DatabaseObjectTable<ContentType> {
             }
 
             String fullSql = sqlStart.replace("%FIELDS%", sqlFields.toString()).replace("%VALUES%", sqlValues.toString());
-            lastUpdate = System.currentTimeMillis();
+            if(refresh) lastUpdate = System.currentTimeMillis();
             return database.execute(fullSql);
         } catch (Exception ex) {
             logger.error("Failed to save object:");
@@ -229,12 +241,18 @@ public class DatabaseObjectTable<ContentType> {
     }
 
     public boolean update(ContentType entry) {
-        if(!drop(entry)) return false;
-        return insert(entry);
+        if(!drop(entry, false)) return false;
+        if(!insert(entry, false)) return false;
+        cache.removeIf(obj -> obj.data == entry);
+        return true;
     }
 
     public boolean drop(ContentType entry) {
-        lastUpdate = System.currentTimeMillis();
+        return drop(entry, true);
+    }
+
+    public boolean drop(ContentType entry, Boolean refresh) {
+        if(refresh) lastUpdate = System.currentTimeMillis();
         return database.execute("DELETE FROM `" + name + "` WHERE `ID` = '" + ((DatabaseObjectTableEntry<ContentType>) entry).getID() + "';");
     }
 
