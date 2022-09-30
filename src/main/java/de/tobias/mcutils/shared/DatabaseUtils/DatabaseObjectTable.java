@@ -240,10 +240,10 @@ public class DatabaseObjectTable<ContentType> {
         }
     }
 
-    public boolean update(DatabaseObjectTableEntry<ContentType> entry, Boolean refresh) {
+    public boolean update(ContentType entry, Boolean refresh) {
         try {
-            String sqlStart = "UPDATE `" + name + "` SET %ARGS%  WHERE `ID` = " + ObjectToSQLParameter(entry.getID()) + ";";
-            StringBuilder sqlArgs = new StringBuilder("`ID`=" + ObjectToSQLParameter(entry.getID()));
+            String sqlStart = "UPDATE `" + name + "` SET %ARGS%  WHERE `ID` = " + ObjectToSQLParameter(((DatabaseObjectTableEntry) entry).getID()) + ";";
+            StringBuilder sqlArgs = new StringBuilder("`ID`=" + ObjectToSQLParameter(((DatabaseObjectTableEntry) entry).getID()));
 
             for(Field field : entry.getClass().getDeclaredFields()) {
                 if(fields.containsKey(field.getName().toUpperCase())) {

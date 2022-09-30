@@ -25,13 +25,13 @@ public class DatabaseObjectTableEntry<ContentType> {
 
     public boolean save() {
         if(table == null) return false;
-        return table.update(this, true);
+        return table.update((ContentType) this, true);
     }
 
     public boolean create(DatabaseObjectTable<ContentType> pTable) {
         table = pTable;
         pTable.lastUpdate = System.currentTimeMillis();
-        return save();
+        return pTable.insert((ContentType) this);
     }
 
     public boolean drop() {
