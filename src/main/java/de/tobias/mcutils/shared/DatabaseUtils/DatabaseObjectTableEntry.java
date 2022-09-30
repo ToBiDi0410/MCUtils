@@ -30,6 +30,7 @@ public class DatabaseObjectTableEntry<ContentType> {
 
     public boolean create(DatabaseObjectTable<ContentType> pTable) {
         table = pTable;
+        pTable.lastUpdate = System.currentTimeMillis();
         return save();
     }
 
