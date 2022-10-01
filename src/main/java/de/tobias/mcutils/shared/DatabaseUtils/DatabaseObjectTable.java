@@ -85,6 +85,8 @@ public class DatabaseObjectTable<ContentType> {
                 logger.debug("Took from cache: §6" + cachedName);
                 return (ArrayList<String>) cached.get().data;
             }
+        } else {
+            logger.debug("Ignoring cache because of expiry: §6" + cachedName);
         }
 
         if(!fields.containsKey(searchFieldName.toUpperCase())) throw new Error("Unknown field: " + searchFieldName);
@@ -119,6 +121,8 @@ public class DatabaseObjectTable<ContentType> {
                 logger.debug("Took from cache: §6" + cachedName);
                 return (ArrayList<ContentType>) cached.get().data;
             }
+        } else {
+            logger.debug("Ignoring cache because of expiry: §6" + cachedName);
         }
 
         ArrayList<ContentType> entries = new ArrayList<>();
@@ -167,6 +171,8 @@ public class DatabaseObjectTable<ContentType> {
             if(cached.get().fetched >= lastUpdate) {
                 logger.debug("Took from cache: §6" + cachedName);
                 return (ContentType) cached.get().data;
+            } else {
+                logger.debug("Ignoring cache because of expiry: §6" + cachedName);
             }
         }
 
