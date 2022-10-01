@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b935fee-e953-4ecb-8670-617eec17549e" name="Changes" comment="Fix a stupid spelling mistake">
+    <list default="true" id="1b935fee-e953-4ecb-8670-617eec17549e" name="Changes" comment="Fix criteria cast to NUMERIC for higher numbers">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/DatabaseUtils/DatabaseObjectTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/DatabaseUtils/DatabaseObjectTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/BigNumberFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/BigNumberFormatter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -342,7 +342,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664636377842</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Fix criteria cast to NUMERIC for higher numbers">
+      <created>1664637228272</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1664637228272</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -357,7 +364,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add JSON Serializer and fix Loggers" />
     <MESSAGE value="Remove the JSON Serializer because it was broken and fix some things" />
     <MESSAGE value="Add some number formatters" />
     <MESSAGE value="Fix some number formatters" />
@@ -382,6 +388,7 @@
     <MESSAGE value="Add even more debug messages" />
     <MESSAGE value="Hopefully now fix caching" />
     <MESSAGE value="Fix a stupid spelling mistake" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix a stupid spelling mistake" />
+    <MESSAGE value="Fix criteria cast to NUMERIC for higher numbers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix criteria cast to NUMERIC for higher numbers" />
   </component>
 </project>

@@ -46,9 +46,9 @@ public class BigNumberFormatter {
     }
 
     public String formatBigDecimal(BigDecimal number) {
-        if (number.longValue() >= 1000 * 1000 * 1000)
-            return NumberUtils.stringRoundDouble(number.divide(new BigDecimal("1000000000")).doubleValue(), BILLION_DECIMALS) + BILLION_SHORT;
-        if (number.longValue() >= 1000 * 1000)
+        if (number.divide(new BigDecimal(1000000)).longValue() >= 1000)
+            return NumberUtils.stringRoundDouble(number.divide(new BigDecimal(1000000000)).doubleValue(), BILLION_DECIMALS) + BILLION_SHORT;
+        if (number.divide(new BigDecimal(1000)).longValue() >= 1000)
             return NumberUtils.stringRoundDouble(number.divide(new BigDecimal(1000000)).doubleValue(), MILLION_DECIMALS) + MILLION_SHORT;
         if (number.longValue() >= 1000) return NumberUtils.stringRoundDouble(number.divide(new BigDecimal(1000)).doubleValue(), THOUSAND_DECIMALS) + THOUSAND_SHORT;
         return NumberUtils.stringRoundDouble(number.doubleValue(), NORMAL_DECIMALS);
