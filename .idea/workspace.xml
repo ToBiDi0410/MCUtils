@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b935fee-e953-4ecb-8670-617eec17549e" name="Changes" comment="Fix criteria cast to NUMERIC for higher numbers">
+    <list default="true" id="1b935fee-e953-4ecb-8670-617eec17549e" name="Changes" comment="Fix BigDecimal Number formatter to support billions correctly">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/BigNumberFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/BigNumberFormatter.java" afterDir="false" />
     </list>
@@ -349,7 +349,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664637228272</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Fix BigDecimal Number formatter to support billions correctly">
+      <created>1664637459443</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1664637459443</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -364,7 +371,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Remove the JSON Serializer because it was broken and fix some things" />
     <MESSAGE value="Add some number formatters" />
     <MESSAGE value="Fix some number formatters" />
     <MESSAGE value="IDK why this didn't work" />
@@ -389,6 +395,7 @@
     <MESSAGE value="Hopefully now fix caching" />
     <MESSAGE value="Fix a stupid spelling mistake" />
     <MESSAGE value="Fix criteria cast to NUMERIC for higher numbers" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix criteria cast to NUMERIC for higher numbers" />
+    <MESSAGE value="Fix BigDecimal Number formatter to support billions correctly" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix BigDecimal Number formatter to support billions correctly" />
   </component>
 </project>
