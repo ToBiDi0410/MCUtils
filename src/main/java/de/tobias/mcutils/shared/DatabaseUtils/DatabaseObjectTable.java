@@ -213,7 +213,7 @@ public class DatabaseObjectTable<ContentType> {
     }
 
     public boolean insert(ContentType entry) {
-        return insert(entry, true);
+        return insert(entry, false);
     }
 
     public boolean insert(ContentType entry, Boolean refresh) {
@@ -232,6 +232,7 @@ public class DatabaseObjectTable<ContentType> {
 
             String fullSql = sqlStart.replace("%FIELDS%", sqlFields.toString()).replace("%VALUES%", sqlValues.toString());
             if(refresh) lastUpdate = System.currentTimeMillis();
+            cache.removeIf(obj -> obj.id.toLowerCase().contains("MATCHFIELD") || obj.id.toLowerCase().contains("GETALL"));
             return database.execute(fullSql);
         } catch (Exception ex) {
             logger.error("Failed to save object:");
