@@ -27,8 +27,6 @@ public class DatabaseObjectTable<ContentType> {
     public HashMap<String, HashMap<String, Object>> byFieldCache = new HashMap<>();
     public boolean enableCaching = true;
 
-    public long lastUpdate = System.currentTimeMillis();
-
     public DatabaseObjectTable(Class pObjectClass, String pName, AIODatabase db, Logger baseLogger) {
         if(!(pObjectClass.getSuperclass() == DatabaseObjectTableEntry.class)) throw new Error("Objects in 'DatabaseObjectTable' have to extend 'DatabaseObjectTableEntry'");
         name = pName;
@@ -81,10 +79,8 @@ public class DatabaseObjectTable<ContentType> {
         String cachedName = "MATCHFIELDVALUEID|||" + searchFieldName + "|||" + value.toString();
         Optional<CachedObject> cached = cache.stream().filter((a) -> a.id.equalsIgnoreCase(cachedName)).findAny();
         if(cached.isPresent()) {
-            if(cached.get().fetched >= lastUpdate) {
-                logger.debug("Took from cache: §6" + cachedName);
-                return (ArrayList<String>) cached.get().data;
-            }
+            logger.debug("Took from cache: §6" + cachedName);
+            return (ArrayList<String>) cached.get().data;
         } else {
             logger.debug("Ignoring cache because of expiry: §6" + cachedName);
         }
@@ -117,10 +113,8 @@ public class DatabaseObjectTable<ContentType> {
         String cachedName = "GETALL|||";
         Optional<CachedObject> cached = cache.stream().filter((a) -> a.id.equalsIgnoreCase(cachedName)).findAny();
         if(cached.isPresent()) {
-            if(cached.get().fetched >= lastUpdate) {
-                logger.debug("Took from cache: §6" + cachedName);
-                return (ArrayList<ContentType>) cached.get().data;
-            }
+            logger.debug("Took from cache: §6" + cachedName);
+            return (ArrayList<ContentType>) cached.get().data;
         } else {
             logger.debug("Ignoring cache because of expiry: §6" + cachedName);
         }
@@ -140,7 +134,6 @@ public class DatabaseObjectTable<ContentType> {
                 newCachedObject.data = entries;
                 cache.add(newCachedObject);
             }
-
         } catch (Exception ex) {
             logger.error("Failed to all entries from table:");
             ex.printStackTrace();
@@ -149,7 +142,10 @@ public class DatabaseObjectTable<ContentType> {
     }
 
     public boolean updateFieldForAll(String fieldName, Object data) {
-        return database.execute("UPDATE `" + name + "` SET `" + fieldName.toUpperCase() + "` = " + ObjectToSQLParameter(data) + ";");
+        boolean res = database.execute("UPDATE `" + name + "` SET `" + fieldName.toUpperCase() + "` = " + ObjectToSQLParameter(data) + ";");
+        if(!res) return false;
+        cache.clear();
+        return true;
     }
 
     public ArrayList<ContentType> getOrderedByWithLimit(String criteria, Integer count) {
@@ -168,12 +164,8 @@ public class DatabaseObjectTable<ContentType> {
         String cachedName = "MATCHID|||" + id;
         Optional<CachedObject> cached = cache.stream().filter((a) -> a.id.equalsIgnoreCase(cachedName)).findAny();
         if(cached.isPresent()) {
-            if(cached.get().fetched >= lastUpdate) {
-                logger.debug("Took from cache: §6" + cachedName);
-                return (ContentType) cached.get().data;
-            } else {
-                logger.debug("Ignoring cache because of expiry: §6" + cachedName);
-            }
+            logger.debug("Took from cache: §6" + cachedName);
+            return (ContentType) cached.get().data;
         }
 
         try {
@@ -218,11 +210,8 @@ public class DatabaseObjectTable<ContentType> {
         }
     }
 
-    public boolean insert(ContentType entry) {
-        return insert(entry, false);
-    }
 
-    public boolean insert(ContentType entry, Boolean refresh) {
+    public boolean insert(ContentType entry) {
         try {
             String sqlStart = "INSERT INTO `" + name + "` (%FIELDS%) VALUES (%VALUES%)";
             StringBuilder sqlFields = new StringBuilder("`ID`");
@@ -237,8 +226,7 @@ public class DatabaseObjectTable<ContentType> {
             }
 
             String fullSql = sqlStart.replace("%FIELDS%", sqlFields.toString()).replace("%VALUES%", sqlValues.toString());
-            cache.removeIf(obj -> (obj.id.toLowerCase().contains("MATCHFIELDVALUEID|||") || obj.id.toLowerCase().contains("GETALL|||")));
-            if(refresh) lastUpdate = System.currentTimeMillis();
+            generalStructureChanged();
             return database.execute(fullSql);
         } catch (Exception ex) {
             logger.error("Failed to save object:");
@@ -247,7 +235,7 @@ public class DatabaseObjectTable<ContentType> {
         }
     }
 
-    public boolean update(ContentType entry, Boolean refresh) {
+    public boolean update(ContentType entry) {
         try {
             String sqlStart = "UPDATE `" + name + "` SET %ARGS%  WHERE `ID` = " + ObjectToSQLParameter(((DatabaseObjectTableEntry) entry).getID()) + ";";
             StringBuilder sqlArgs = new StringBuilder("`ID`=" + ObjectToSQLParameter(((DatabaseObjectTableEntry) entry).getID()));
@@ -261,7 +249,6 @@ public class DatabaseObjectTable<ContentType> {
 
             String fullSql = sqlStart.replaceAll("%ARGS%", sqlArgs.toString());
             cache.removeIf(obj -> obj.data == entry);
-            if(refresh) lastUpdate = System.currentTimeMillis();
             return database.execute(fullSql);
         } catch (Exception ex) {
             logger.error("Failed to update object:");
@@ -270,12 +257,12 @@ public class DatabaseObjectTable<ContentType> {
         }
     }
 
-    public boolean drop(ContentType entry) {
-        return drop(entry, true);
+    private void generalStructureChanged() {
+        cache.removeIf(obj -> (obj.id.toLowerCase().contains("MATCHFIELDVALUEID|||") || obj.id.toLowerCase().contains("GETALL|||")));
     }
 
-    public boolean drop(ContentType entry, Boolean refresh) {
-        if(refresh) lastUpdate = System.currentTimeMillis();
+    public boolean drop(ContentType entry) {
+        generalStructureChanged();
         return database.execute("DELETE FROM `" + name + "` WHERE `ID` = '" + ((DatabaseObjectTableEntry<ContentType>) entry).getID() + "';");
     }
 
