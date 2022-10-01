@@ -151,7 +151,7 @@ public class DatabaseObjectTable<ContentType> {
     public ArrayList<ContentType> getOrderedByWithLimit(String criteria, Integer count) {
         ArrayList<ContentType> entries = new ArrayList<>();
         try {
-            ResultSet rs = database.query("SELECT `ID` FROM `" + name + "` ORDER BY CAST(`" + criteria.toUpperCase() + "` as BIGINT) DESC LIMIT " + count + ";");
+            ResultSet rs = database.query("SELECT `ID` FROM `" + name + "` ORDER BY CAST(`" + criteria.toUpperCase() + "` as NUMERIC) DESC LIMIT " + count + ";");
             while(rs.next()) entries.add(getByID(rs.getString("ID")));
         } catch (Exception ex) {
             logger.error("Failed to get data from table by criteria:");
