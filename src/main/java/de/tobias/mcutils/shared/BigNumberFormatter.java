@@ -6,12 +6,16 @@ public class BigNumberFormatter {
 
     public String THOUSAND_SHORT = "k";
     public String MILLION_SHORT = "M";
-    public String BILLION_SHORT = "M";
+    public String BILLION_SHORT = "B";
+    public String TRILLION_SHORT = "T";
+    public String QUADRILLION_SHORT = "QD";
 
     public int THOUSAND_DECIMALS = 2;
     public int MILLION_DECIMALS = 3;
-    public int BILLION_DECIMALS = 5;
-    public int NORMAL_DECIMALS = 5;
+    public int BILLION_DECIMALS = 3;
+    public int TRILLION_DECIMALS = 3;
+    public int QUADRILLION_DECIMALS = 3;
+    public int NORMAL_DECIMALS = 4;
 
     public BigNumberFormatter() {}
 
@@ -46,8 +50,15 @@ public class BigNumberFormatter {
     }
 
     public String formatBigDecimal(BigDecimal number) {
+        if (number.divide(new BigDecimal(1000*1000*1000)).divide(new BigDecimal(1000)).longValue() >= 1000) {
+            return NumberUtils.stringRoundDouble(number.divide(new BigDecimal(1000*1000*1000).multiply(new BigDecimal(1000*1000))).doubleValue(), QUADRILLION_DECIMALS) + QUADRILLION_SHORT;
+        }
+
+        if (number.divide(new BigDecimal(1000*1000*1000)).longValue() >= 1000) {
+            return NumberUtils.stringRoundDouble(number.divide(new BigDecimal(1000*1000*1000).multiply(new BigDecimal(1000))).doubleValue(), TRILLION_DECIMALS) + TRILLION_SHORT;
+        }
+
         if (number.divide(new BigDecimal(1000*1000)).longValue() >= 1000) {
-            System.out.println("TEST!");
             return NumberUtils.stringRoundDouble(number.divide(new BigDecimal(1000*1000*1000)).doubleValue(), BILLION_DECIMALS) + BILLION_SHORT;
         }
 
