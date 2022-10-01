@@ -112,7 +112,7 @@ public class DatabaseObjectTable<ContentType> {
     }
 
     public ArrayList<ContentType> getAll(Integer limit) {
-        String cachedName = "GETALL";
+        String cachedName = "GETALL|||";
         Optional<CachedObject> cached = cache.stream().filter((a) -> a.id.equalsIgnoreCase(cachedName)).findAny();
         if(cached.isPresent()) {
             if(cached.get().fetched >= lastUpdate) {
@@ -231,8 +231,8 @@ public class DatabaseObjectTable<ContentType> {
             }
 
             String fullSql = sqlStart.replace("%FIELDS%", sqlFields.toString()).replace("%VALUES%", sqlValues.toString());
+            cache.removeIf(obj -> (obj.id.toLowerCase().contains("MATCHFIELDVALUEID|||") || obj.id.toLowerCase().contains("GETALL|||")));
             if(refresh) lastUpdate = System.currentTimeMillis();
-            cache.removeIf(obj -> obj.id.toLowerCase().contains("MATCHFIELD") || obj.id.toLowerCase().contains("GETALL"));
             return database.execute(fullSql);
         } catch (Exception ex) {
             logger.error("Failed to save object:");

@@ -31,7 +31,7 @@ public class DatabaseObjectTableEntry<ContentType> {
     public boolean create(DatabaseObjectTable<ContentType> pTable) {
         table = pTable;
         pTable.lastUpdate = System.currentTimeMillis();
-        return pTable.insert((ContentType) this);
+        return pTable.insert((ContentType) this, false);
     }
 
     public boolean drop() {

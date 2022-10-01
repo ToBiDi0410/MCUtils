@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b935fee-e953-4ecb-8670-617eec17549e" name="Changes" comment="Improve DatabaseObjectTable to cast order criteria">
+    <list default="true" id="1b935fee-e953-4ecb-8670-617eec17549e" name="Changes" comment="Improve Caching even more">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/DatabaseUtils/DatabaseObjectTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/DatabaseUtils/DatabaseObjectTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/DatabaseUtils/DatabaseObjectTableEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/DatabaseUtils/DatabaseObjectTableEntry.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -307,7 +308,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664634535694</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Improve Caching even more">
+      <created>1664634827689</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1664634827689</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -322,7 +330,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fix DatabaseObjectTable Prefix" />
     <MESSAGE value="Fix Itembuilder Lore" />
     <MESSAGE value="Fix Itembuilder Lore (again)" />
     <MESSAGE value="Improve TimeSerializer" />
@@ -347,6 +354,7 @@
     <MESSAGE value="Hopefully Fix some caching/updating stuff again" />
     <MESSAGE value="Fix again" />
     <MESSAGE value="Improve DatabaseObjectTable to cast order criteria" />
-    <option name="LAST_COMMIT_MESSAGE" value="Improve DatabaseObjectTable to cast order criteria" />
+    <MESSAGE value="Improve Caching even more" />
+    <option name="LAST_COMMIT_MESSAGE" value="Improve Caching even more" />
   </component>
 </project>
