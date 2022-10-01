@@ -258,7 +258,7 @@ public class DatabaseObjectTable<ContentType> {
     }
 
     private void generalStructureChanged() {
-        cache.removeIf(obj -> (obj.id.toLowerCase().contains("MATCHFIELDVALUEID|||") || obj.id.toLowerCase().contains("GETALL|||")));
+        cache.removeIf(obj -> (obj.id.contains("MATCHFIELDVALUEID|||") || obj.id.contains("GETALL|||")));
     }
 
     public boolean drop(ContentType entry) {
