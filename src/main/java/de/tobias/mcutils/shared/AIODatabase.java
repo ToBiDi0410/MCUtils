@@ -16,13 +16,13 @@ import java.util.ArrayList;
 public class AIODatabase {
 
     private final File dbFile;
-    Boolean isMySQL = false;
+    public static Boolean isMySQL = false;
 
-    String MYSQL_HOST = "192.168.178.1";
-    String MYSQL_PORT = "3306";
-    String MYSQL_USERNAME = "homes";
-    String MYSQL_PASSWORD = "supersecure#123";
-    String MYSQL_DB = "homes";
+    public static String MYSQL_HOST = "192.168.178.1";
+    public static String MYSQL_PORT = "3306";
+    public static String MYSQL_USERNAME = "homes";
+    public static String MYSQL_PASSWORD = "supersecure#123";
+    public static String MYSQL_DB = "homes";
     private final ArrayList<String> tableNames = new ArrayList<>();
     private final Logger logger;
 
