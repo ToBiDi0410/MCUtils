@@ -6,11 +6,13 @@ import de.tobias.mcutils.shared.AIODatabase;
 import de.tobias.mcutils.shared.CachedObject;
 import de.tobias.mcutils.shared.RuntimeDetector;
 import de.tobias.mcutils.templates.Logger;
+import org.checkerframework.checker.units.qual.A;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.*;
 
@@ -213,21 +215,28 @@ public class DatabaseObjectTable<ContentType> {
 
     public boolean insert(ContentType entry) {
         try {
-            String sqlStart = "INSERT INTO `" + name + "` (%FIELDS%) VALUES (%VALUES%)";
-            StringBuilder sqlFields = new StringBuilder("`ID`");
-            StringBuilder sqlValues = new StringBuilder("'" + ((DatabaseObjectTableEntry) entry).getID() + "'");
+            //Create a String of the fields and a string of the parameter question marks
+            String fieldsString = "";
+            String paramentersString = "";
+            for(String fieldName : getFinalFieldNames(entry)) {
+                fieldsString += ("`" + fieldName + "`,");
+                paramentersString += "?,";
+            }
+            if(fieldsString.endsWith(",")) fieldsString = fieldsString.substring(0, fieldsString.length()-1);
+            if(paramentersString.endsWith(",")) paramentersString = paramentersString.substring(0, paramentersString.length()-1);
 
-            for(Field field : entry.getClass().getDeclaredFields()) {
-                if(fields.containsKey(field.getName().toUpperCase())) {
-                    field.setAccessible(true);
-                    sqlFields.append(", `").append(field.getName().toUpperCase()).append("`");
-                    sqlValues.append(", ").append(ObjectToSQLParameter(field.get(entry)));
-                }
+            //Prepare the Statement
+            String sqlWithFields = "INSERT INTO `" + name + "` (" + fieldsString + ") VALUES (" + paramentersString + ")";
+            PreparedStatement stmt = database.getPreparedStatement(sqlWithFields);
+
+            //Add all values (starting from 1)
+            int counter = 1;
+            for(Object fieldValue : getFinalFieldValues(entry)) {
+                if(fieldValue.getClass() == UUID.class) stmt.setString(counter, fieldValue.toString());
+                else stmt.setObject(counter, fieldValue);
             }
 
-            String fullSql = sqlStart.replace("%FIELDS%", sqlFields.toString()).replace("%VALUES%", sqlValues.toString());
-            generalStructureChanged();
-            return database.execute(fullSql);
+            return database.executeStatement(stmt);
         } catch (Exception ex) {
             logger.error("Failed to save object:");
             ex.printStackTrace();
@@ -237,24 +246,56 @@ public class DatabaseObjectTable<ContentType> {
 
     public boolean update(ContentType entry) {
         try {
-            String sqlStart = "UPDATE `" + name + "` SET %ARGS%  WHERE `ID` = " + ObjectToSQLParameter(((DatabaseObjectTableEntry) entry).getID()) + ";";
-            StringBuilder sqlArgs = new StringBuilder("`ID`=" + ObjectToSQLParameter(((DatabaseObjectTableEntry) entry).getID()));
+            //Create a String of the fields with parameters
+            String fieldsString = "";
+            for(String fieldName : getFinalFieldNames(entry)) fieldsString += ("`" + fieldName + "` = ?,");
+            if(fieldsString.endsWith(",")) fieldsString = fieldsString.substring(0, fieldsString.length()-1);
 
-            for(Field field : entry.getClass().getDeclaredFields()) {
-                if(fields.containsKey(field.getName().toUpperCase())) {
-                    field.setAccessible(true);
-                    sqlArgs.append(", `").append(field.getName().toUpperCase()).append("`").append("=").append(ObjectToSQLParameter(field.get(entry)));
-                }
+            //Prepare the Statement
+            String sqlWithFields = "UPDATE `" + name + "` SET " + fieldsString + " WHERE `ID` = ?;";
+            PreparedStatement stmt = database.getPreparedStatement(sqlWithFields);
+
+            //Add all values (starting from 1)
+            int counter = 1;
+            for(Object fieldValue : getFinalFieldValues(entry)) {
+                if(fieldValue.getClass() == UUID.class) stmt.setString(counter, fieldValue.toString());
+                else stmt.setObject(counter, fieldValue);
             }
 
-            String fullSql = sqlStart.replaceAll("%ARGS%", sqlArgs.toString());
-            cache.removeIf(obj -> obj.data == entry);
-            return database.execute(fullSql);
+            //Add ID as last value (for WHERE selector)
+            stmt.setString(counter, ((DatabaseObjectTableEntry) entry).getID());
+            return database.executeStatement(stmt);
         } catch (Exception ex) {
             logger.error("Failed to update object:");
             ex.printStackTrace();
             return false;
         }
+    }
+
+    private ArrayList<String> getFinalFieldNames(ContentType entry) {
+        ArrayList<String> list = new ArrayList<>();
+
+        for(Field field : entry.getClass().getDeclaredFields()) {
+            if(fields.containsKey(field.getName().toUpperCase())) {
+                field.setAccessible(true);
+                list.add(field.getName().toUpperCase());
+            }
+        }
+
+        return list;
+    }
+
+    private ArrayList<Object> getFinalFieldValues(ContentType entry) throws Exception {
+        ArrayList<Object> list = new ArrayList<>();
+
+        for(Field field : entry.getClass().getDeclaredFields()) {
+            if(fields.containsKey(field.getName().toUpperCase())) {
+                field.setAccessible(true);
+                list.add(field.get(entry));
+            }
+        }
+
+        return list;
     }
 
     private void generalStructureChanged() {

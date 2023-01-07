@@ -106,6 +106,17 @@ public class AIODatabase {
         }
     }
 
+    public boolean executeStatement(PreparedStatement exec) {
+        try {
+            exec.execute();
+            return true;
+        } catch (Exception ex) {
+            logger.error("Failed database execute (statement): ");
+            ex.printStackTrace();
+            return false;
+        }
+    }
+
     public ResultSet query(String sql) {
         sql = format(sql);
         logger.debug("QUERY: " + sql);
@@ -114,6 +125,30 @@ public class AIODatabase {
             return exec.executeQuery();
         } catch (Exception ex) {
             logger.error("Failed database query: ");
+            logger.error(sql);
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
+    public ResultSet queryStatement(PreparedStatement exec) {
+        try {
+            return exec.executeQuery();
+        } catch (Exception ex) {
+            logger.error("Failed database query (statement): ");
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
+    public PreparedStatement getPreparedStatement(String sql) {
+        sql = format(sql);
+        logger.debug("STATEMENT: " + sql);
+        try {
+            PreparedStatement exec = conn.prepareStatement(sql);
+            return exec;
+        } catch (Exception ex) {
+            logger.error("Failed database statement: ");
             logger.error(sql);
             ex.printStackTrace();
             return null;

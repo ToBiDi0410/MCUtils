@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b935fee-e953-4ecb-8670-617eec17549e" name="Changes" comment="Fix AIODatabase">
+    <list default="true" id="1b935fee-e953-4ecb-8670-617eec17549e" name="Changes" comment="Add some fancy new numbers">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/BigNumberFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/BigNumberFormatter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/AIODatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/AIODatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/DatabaseUtils/DatabaseObjectTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/DatabaseUtils/DatabaseObjectTable.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -377,7 +378,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664653839949</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Add some fancy new numbers">
+      <created>1664664427165</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1664664427165</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -392,7 +400,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add BigInteger to SQL" />
     <MESSAGE value="Further Improvements to the DatabaseObjectTable" />
     <MESSAGE value="Add BigDecimal to DatabaseObjectTable" />
     <MESSAGE value="Add getOrderedByWithLimit to DatabaseObjectTable" />
@@ -417,6 +424,7 @@
     <MESSAGE value="Debug build" />
     <MESSAGE value="Add support for really big numbers" />
     <MESSAGE value="Fix AIODatabase" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix AIODatabase" />
+    <MESSAGE value="Add some fancy new numbers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add some fancy new numbers" />
   </component>
 </project>
