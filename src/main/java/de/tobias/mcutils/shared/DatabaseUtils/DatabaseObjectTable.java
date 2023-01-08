@@ -234,8 +234,11 @@ public class DatabaseObjectTable<ContentType> {
             for(Object fieldValue : getFinalFieldValues(entry)) {
                 if(fieldValue.getClass() == UUID.class) stmt.setString(counter, fieldValue.toString());
                 else stmt.setObject(counter, fieldValue);
+                //System.out.println(counter + " --> " + fieldValue.toString());
+                counter++;
             }
 
+            generalStructureChanged();
             return database.executeStatement(stmt);
         } catch (Exception ex) {
             logger.error("Failed to save object:");
@@ -260,10 +263,13 @@ public class DatabaseObjectTable<ContentType> {
             for(Object fieldValue : getFinalFieldValues(entry)) {
                 if(fieldValue.getClass() == UUID.class) stmt.setString(counter, fieldValue.toString());
                 else stmt.setObject(counter, fieldValue);
+                //System.out.println(counter + " --> " + fieldValue.toString());
+                counter++;
             }
 
             //Add ID as last value (for WHERE selector)
             stmt.setString(counter, ((DatabaseObjectTableEntry) entry).getID());
+            cache.removeIf(obj -> obj.data == entry);
             return database.executeStatement(stmt);
         } catch (Exception ex) {
             logger.error("Failed to update object:");
@@ -274,6 +280,7 @@ public class DatabaseObjectTable<ContentType> {
 
     private ArrayList<String> getFinalFieldNames(ContentType entry) {
         ArrayList<String> list = new ArrayList<>();
+        list.add("ID");
 
         for(Field field : entry.getClass().getDeclaredFields()) {
             if(fields.containsKey(field.getName().toUpperCase())) {
@@ -287,6 +294,7 @@ public class DatabaseObjectTable<ContentType> {
 
     private ArrayList<Object> getFinalFieldValues(ContentType entry) throws Exception {
         ArrayList<Object> list = new ArrayList<>();
+        list.add(((DatabaseObjectTableEntry) entry).getID());
 
         for(Field field : entry.getClass().getDeclaredFields()) {
             if(fields.containsKey(field.getName().toUpperCase())) {

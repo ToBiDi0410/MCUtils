@@ -5,7 +5,7 @@ import java.util.UUID;
 @SuppressWarnings("unused")
 public class DatabaseObjectTableEntry<ContentType> {
 
-    private transient String id;
+    private String id;
     private transient DatabaseObjectTable<ContentType> table;
     private transient Object data;
 
