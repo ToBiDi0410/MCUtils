@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b935fee-e953-4ecb-8670-617eec17549e" name="Changes" comment="Add BukkitAutoUpdater">
+    <list default="true" id="1b935fee-e953-4ecb-8670-617eec17549e" name="Changes" comment="(Tried to) Improve the cache">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/DatabaseUtils/DatabaseObjectTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/DatabaseUtils/DatabaseObjectTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/bukkit/BukkitAutoUpdater.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/bukkit/BukkitAutoUpdater.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,13 +61,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1662373282253</updated>
-    </task>
-    <task id="LOCAL-00001" summary="Add basic files">
-      <created>1662375492147</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1662375492147</updated>
     </task>
     <task id="LOCAL-00002" summary="Add some GUI related things">
       <created>1662378006357</created>
@@ -405,7 +398,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673191796658</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="(Tried to) Improve the cache">
+      <created>1673197030492</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1673197030493</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -420,7 +420,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Improve DatabaseObjectTable" />
     <MESSAGE value="Add more supported Types to StaticClassSerializers" />
     <MESSAGE value="Fix mistakes in StaticClassSerializers" />
     <MESSAGE value="Add Location support to BukkitStaticClassSerializer" />
@@ -445,6 +444,7 @@
     <MESSAGE value="Updated the insert and update methods of DatabaseObjectTable to use SQL Parameters" />
     <MESSAGE value="Fix errors introduced with SQL Parameters" />
     <MESSAGE value="Add BukkitAutoUpdater" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add BukkitAutoUpdater" />
+    <MESSAGE value="(Tried to) Improve the cache" />
+    <option name="LAST_COMMIT_MESSAGE" value="(Tried to) Improve the cache" />
   </component>
 </project>

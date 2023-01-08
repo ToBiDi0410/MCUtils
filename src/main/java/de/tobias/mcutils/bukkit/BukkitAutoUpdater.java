@@ -52,7 +52,7 @@ public class BukkitAutoUpdater {
             return version;
         } catch (Exception ex) {
             ex.printStackTrace();
-            return "NULL";
+            return "0.0";
         }
     }
 
