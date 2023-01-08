@@ -6,7 +6,6 @@ import de.tobias.mcutils.shared.AIODatabase;
 import de.tobias.mcutils.shared.CachedObject;
 import de.tobias.mcutils.shared.RuntimeDetector;
 import de.tobias.mcutils.templates.Logger;
-import org.checkerframework.checker.units.qual.A;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -93,17 +92,13 @@ public class DatabaseObjectTable<ContentType> {
             ResultSet rs = database.query("SELECT `ID` FROM `" + name + "` WHERE `" + searchFieldName.toUpperCase() + "` = " + ObjectToSQLParameter(value) + ";");
             while(rs.next()) entries.add(rs.getString("ID"));
 
-            if(cached.isPresent()) {
-                cached.get().fetched = System.currentTimeMillis();
-                cached.get().data = entries;
-            } else if(enableCaching) {
+            if(enableCaching) {
                 CachedObject newCachedObject = new CachedObject();
                 newCachedObject.id = cachedName;
                 newCachedObject.fetched = System.currentTimeMillis();
                 newCachedObject.data = entries;
                 cache.add(newCachedObject);
             }
-
         } catch (Exception ex) {
             logger.error("Failed to get data from table by fields:");
             ex.printStackTrace();
@@ -126,10 +121,7 @@ public class DatabaseObjectTable<ContentType> {
             ResultSet rs = database.query("SELECT `ID` FROM `" + name + "` LIMIT " + limit + ";");
             while(rs.next()) entries.add(getByID(rs.getString("ID")));
 
-            if(cached.isPresent()) {
-                cached.get().fetched = System.currentTimeMillis();
-                cached.get().data = entries;
-            } else if(enableCaching) {
+            if(enableCaching) {
                 CachedObject newCachedObject = new CachedObject();
                 newCachedObject.id = cachedName;
                 newCachedObject.fetched = System.currentTimeMillis();
@@ -192,10 +184,7 @@ public class DatabaseObjectTable<ContentType> {
                     }
                 }
 
-                if(cached.isPresent()) {
-                    cached.get().fetched = System.currentTimeMillis();
-                    cached.get().data = entry;
-                } else if(enableCaching) {
+                if(enableCaching) {
                     CachedObject newCachedObject = new CachedObject();
                     newCachedObject.id = cachedName;
                     newCachedObject.fetched = System.currentTimeMillis();
@@ -234,12 +223,13 @@ public class DatabaseObjectTable<ContentType> {
             for(Object fieldValue : getFinalFieldValues(entry)) {
                 if(fieldValue.getClass() == UUID.class) stmt.setString(counter, fieldValue.toString());
                 else stmt.setObject(counter, fieldValue);
-                //System.out.println(counter + " --> " + fieldValue.toString());
+                logger.debug(counter + " --> " + fieldValue.toString());
                 counter++;
             }
 
+            boolean res = database.executeStatement(stmt);
             generalStructureChanged();
-            return database.executeStatement(stmt);
+            return res;
         } catch (Exception ex) {
             logger.error("Failed to save object:");
             ex.printStackTrace();
@@ -263,19 +253,24 @@ public class DatabaseObjectTable<ContentType> {
             for(Object fieldValue : getFinalFieldValues(entry)) {
                 if(fieldValue.getClass() == UUID.class) stmt.setString(counter, fieldValue.toString());
                 else stmt.setObject(counter, fieldValue);
-                //System.out.println(counter + " --> " + fieldValue.toString());
+                logger.debug(counter + " --> " + fieldValue.toString());
                 counter++;
             }
 
             //Add ID as last value (for WHERE selector)
-            stmt.setString(counter, ((DatabaseObjectTableEntry) entry).getID());
-            cache.removeIf(obj -> obj.data == entry);
-            return database.executeStatement(stmt);
+            stmt.setString(counter, ((DatabaseObjectTableEntry<?>) entry).getID());
+            boolean res = database.executeStatement(stmt);
+            removeCache(entry);
+            return res;
         } catch (Exception ex) {
             logger.error("Failed to update object:");
             ex.printStackTrace();
             return false;
         }
+    }
+
+    public void removeCache(ContentType entry) {
+        cache.removeIf(obj -> obj.data == entry);
     }
 
     private ArrayList<String> getFinalFieldNames(ContentType entry) {

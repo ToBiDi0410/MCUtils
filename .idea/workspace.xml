@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b935fee-e953-4ecb-8670-617eec17549e" name="Changes" comment="Updated the insert and update methods of DatabaseObjectTable to use SQL Parameters">
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/bukkit/BukkitAutoUpdater.java" afterDir="false" />
+    <list default="true" id="1b935fee-e953-4ecb-8670-617eec17549e" name="Changes" comment="Add BukkitAutoUpdater">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/DatabaseUtils/DatabaseObjectTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/DatabaseUtils/DatabaseObjectTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/DatabaseUtils/DatabaseObjectTableEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/DatabaseUtils/DatabaseObjectTableEntry.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -393,7 +391,21 @@
       <option name="project" value="LOCAL" />
       <updated>1673105119438</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Fix errors introduced with SQL Parameters">
+      <created>1673191784744</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1673191784744</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Add BukkitAutoUpdater">
+      <created>1673191796658</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1673191796658</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -408,8 +420,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add BigDecimal to DatabaseObjectTable" />
-    <MESSAGE value="Add getOrderedByWithLimit to DatabaseObjectTable" />
     <MESSAGE value="Improve DatabaseObjectTable" />
     <MESSAGE value="Add more supported Types to StaticClassSerializers" />
     <MESSAGE value="Fix mistakes in StaticClassSerializers" />
@@ -433,6 +443,8 @@
     <MESSAGE value="Fix AIODatabase" />
     <MESSAGE value="Add some fancy new numbers" />
     <MESSAGE value="Updated the insert and update methods of DatabaseObjectTable to use SQL Parameters" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated the insert and update methods of DatabaseObjectTable to use SQL Parameters" />
+    <MESSAGE value="Fix errors introduced with SQL Parameters" />
+    <MESSAGE value="Add BukkitAutoUpdater" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add BukkitAutoUpdater" />
   </component>
 </project>
