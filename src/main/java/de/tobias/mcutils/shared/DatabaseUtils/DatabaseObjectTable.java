@@ -89,8 +89,12 @@ public class DatabaseObjectTable<ContentType> {
         if(!fields.containsKey(searchFieldName.toUpperCase())) throw new Error("Unknown field: " + searchFieldName);
         ArrayList<String> entries = new ArrayList<>();
         try {
-            ResultSet rs = database.query("SELECT `ID` FROM `" + name + "` WHERE `" + searchFieldName.toUpperCase() + "` = " + ObjectToSQLParameter(value) + ";");
+            PreparedStatement stmt = database.getPreparedStatement("SELECT `ID` FROM `" + name + "` WHERE `" + searchFieldName.toUpperCase() + "` = ?;");
+            if(value.getClass() == UUID.class) stmt.setString(1, value.toString());
+            else stmt.setObject(1, value);
+            ResultSet rs = database.queryStatement(stmt);
             while(rs.next()) entries.add(rs.getString("ID"));
+
 
             if(enableCaching) {
                 CachedObject newCachedObject = new CachedObject();
@@ -135,8 +139,18 @@ public class DatabaseObjectTable<ContentType> {
         return entries;
     }
 
-    public boolean updateFieldForAll(String fieldName, Object data) {
-        boolean res = database.execute("UPDATE `" + name + "` SET `" + fieldName.toUpperCase() + "` = " + ObjectToSQLParameter(data) + ";");
+    public boolean updateFieldForAll(String fieldName, Object value) {
+        boolean res = false;
+        try {
+            PreparedStatement stmt = database.getPreparedStatement("UPDATE `" + name + "` SET `" + fieldName.toUpperCase() + "` = ?;");
+            if(value.getClass() == UUID.class) stmt.setString(1, value.toString());
+            else stmt.setObject(1, value);
+            res = database.executeStatement(stmt);
+        } catch (Exception ex) {
+            logger.error("Failed to update field for all entries:");
+            ex.printStackTrace();
+        }
+
         if(!res) return false;
         cache.clear();
         return true;
