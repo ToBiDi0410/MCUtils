@@ -158,6 +158,7 @@ public class DatabaseObjectTable<ContentType> {
     }
 
     public ArrayList<ContentType> getOrderedByWithLimit(String criteria, Integer count) {
+        criteria = criteria.toUpperCase();
         ArrayList<ContentType> entries = new ArrayList<>();
 
         //Validate & get the field
