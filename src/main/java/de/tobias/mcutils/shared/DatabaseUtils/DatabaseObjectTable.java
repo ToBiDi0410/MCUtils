@@ -14,6 +14,7 @@ import java.math.BigInteger;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @SuppressWarnings("unused")
 public class DatabaseObjectTable<ContentType> {
@@ -158,6 +159,17 @@ public class DatabaseObjectTable<ContentType> {
 
     public ArrayList<ContentType> getOrderedByWithLimit(String criteria, Integer count) {
         ArrayList<ContentType> entries = new ArrayList<>();
+
+        //Validate & get the field
+        Field criteriaField;
+        try {
+            criteriaField = objectClass.getField(criteria);
+        } catch (Exception ex) {
+            logger.error("Unknown field '" + criteria + "' used for 'getOrderedByWithLimit'");
+            return entries;
+        }
+
+        //Add the TOP 10 from the Database
         try {
             ResultSet rs = database.query("SELECT `ID` FROM `" + name + "` ORDER BY CAST(`" + criteria.toUpperCase() + "` as NUMERIC) DESC LIMIT " + count + ";");
             while(rs.next()) entries.add(getByID(rs.getString("ID")));
@@ -165,7 +177,32 @@ public class DatabaseObjectTable<ContentType> {
             logger.error("Failed to get data from table by criteria:");
             ex.printStackTrace();
         }
-        return entries;
+
+        //Add the all from Cache
+        ArrayList cachedObjects = this.cache.stream().filter(a -> a.id.startsWith("MATCHID|||")).map(a -> (ContentType) a.data).collect(Collectors.toCollection(ArrayList::new));
+        entries.addAll(cachedObjects);
+
+        //Sort DESC
+        entries.sort((a, b) -> {
+            try {
+                Object aValue = criteriaField.get(a);
+                Object bValue = criteriaField.get(b);
+
+                if (fields.get(criteriaField) == Long.class) return ((Long)bValue).compareTo(((Long) aValue));
+                else if (fields.get(criteriaField) == Double.class) return ((Double)bValue).compareTo(((Double) aValue));
+                else if (fields.get(criteriaField) == Float.class) return ((Float)bValue).compareTo(((Float) aValue));
+                else if (fields.get(criteriaField) == Boolean.class) return ((Boolean)bValue).compareTo(((Boolean) aValue));
+                else if (fields.get(criteriaField) == BigInteger.class) return ((BigInteger)bValue).compareTo(((BigInteger) aValue));
+                else if (fields.get(criteriaField) == BigDecimal.class) return ((BigDecimal)bValue).compareTo(((BigDecimal) aValue));
+            } catch (Exception ex) {
+                logger.warn("Failed to compare and sort cache by criteria:");
+                ex.printStackTrace();
+            }
+            return 0;
+        });
+
+        //Return the first COUNT elements
+        return entries.stream().limit(count).collect(Collectors.toCollection(ArrayList::new));
     }
 
     public ContentType getByID(String id) {
