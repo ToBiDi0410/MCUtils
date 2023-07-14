@@ -158,7 +158,6 @@ public class DatabaseObjectTable<ContentType> {
     }
 
     public ArrayList<ContentType> getOrderedByWithLimit(String criteria, Integer count) {
-        criteria = criteria.toUpperCase();
         ArrayList<ContentType> entries = new ArrayList<>();
 
         //Validate & get the field
@@ -170,6 +169,7 @@ public class DatabaseObjectTable<ContentType> {
             return entries;
         }
 
+        criteria = criteria.toUpperCase();
         //Add the TOP 10 from the Database
         try {
             ResultSet rs = database.query("SELECT `ID` FROM `" + name + "` ORDER BY CAST(`" + criteria.toUpperCase() + "` as NUMERIC) DESC LIMIT " + count + ";");

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b935fee-e953-4ecb-8670-617eec17549e" name="Changes" comment="Add some debug code">
+    <list default="true" id="1b935fee-e953-4ecb-8670-617eec17549e" name="Changes" comment="Use normalized name in 'getOrderedByWithLimit'">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/DatabaseUtils/DatabaseObjectTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/DatabaseUtils/DatabaseObjectTable.java" afterDir="false" />
     </list>
@@ -61,13 +61,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1662373282253</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Improve and fix time serializer">
-      <created>1662475902466</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1662475902466</updated>
     </task>
     <task id="LOCAL-00007" summary="Improve and time serializer">
       <created>1662476152260</created>
@@ -405,7 +398,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689336435482</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="Use normalized name in 'getOrderedByWithLimit'">
+      <created>1689336684964</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1689336684964</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -420,7 +420,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fix some caching stuff" />
     <MESSAGE value="Fix some caching/updating stuff again" />
     <MESSAGE value="Hopefully Fix some caching/updating stuff again" />
     <MESSAGE value="Fix again" />
@@ -445,6 +444,7 @@
     <MESSAGE value="Respect the unsaved values of cached objects in 'getOrderedByWithLimit'" />
     <MESSAGE value="Fix duplicates in 'getOrderedByWithLimit'" />
     <MESSAGE value="Add some debug code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add some debug code" />
+    <MESSAGE value="Use normalized name in 'getOrderedByWithLimit'" />
+    <option name="LAST_COMMIT_MESSAGE" value="Use normalized name in 'getOrderedByWithLimit'" />
   </component>
 </project>
