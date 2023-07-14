@@ -169,7 +169,6 @@ public class DatabaseObjectTable<ContentType> {
             return entries;
         }
 
-        criteria = criteria.toUpperCase();
         //Add the TOP 10 from the Database
         try {
             ResultSet rs = database.query("SELECT `ID` FROM `" + name + "` ORDER BY CAST(`" + criteria.toUpperCase() + "` as NUMERIC) DESC LIMIT " + count + ";");
@@ -187,18 +186,19 @@ public class DatabaseObjectTable<ContentType> {
         entries = entries.stream().distinct().collect(Collectors.toCollection(ArrayList::new));
 
         //Sort DESCENDING
+        final String criteriaName = criteria.toUpperCase();
         entries.sort((a, b) -> {
             try {
                 Object aValue = criteriaField.get(a);
                 Object bValue = criteriaField.get(b);
                 logger.debug("Comparing §6" + aValue.toString() + "§x vs §6" + bValue.toString());
 
-                if (fields.get(criteriaField) == Long.class) return ((Long)bValue).compareTo(((Long) aValue));
-                else if (fields.get(criteriaField) == Double.class) return ((Double)bValue).compareTo(((Double) aValue));
-                else if (fields.get(criteriaField) == Float.class) return ((Float)bValue).compareTo(((Float) aValue));
-                else if (fields.get(criteriaField) == Boolean.class) return ((Boolean)bValue).compareTo(((Boolean) aValue));
-                else if (fields.get(criteriaField) == BigInteger.class) return ((BigInteger)bValue).compareTo(((BigInteger) aValue));
-                else if (fields.get(criteriaField) == BigDecimal.class) return ((BigDecimal)bValue).compareTo(((BigDecimal) aValue));
+                if (fields.get(criteriaName) == Long.class) return ((Long)bValue).compareTo(((Long) aValue));
+                else if (fields.get(criteriaName) == Double.class) return ((Double)bValue).compareTo(((Double) aValue));
+                else if (fields.get(criteriaName) == Float.class) return ((Float)bValue).compareTo(((Float) aValue));
+                else if (fields.get(criteriaName) == Boolean.class) return ((Boolean)bValue).compareTo(((Boolean) aValue));
+                else if (fields.get(criteriaName) == BigInteger.class) return ((BigInteger)bValue).compareTo(((BigInteger) aValue));
+                else if (fields.get(criteriaName) == BigDecimal.class) return ((BigDecimal)bValue).compareTo(((BigDecimal) aValue));
                 else logger.warn("Failed to compare field with class:" + fields.get(criteriaField).getClass().getName());
             } catch (Exception ex) {
                 logger.warn("Failed to compare and sort cache by criteria:");
