@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b935fee-e953-4ecb-8670-617eec17549e" name="Changes" comment="DatabaseObjectTable now uses even more dynamic SQL">
+    <list default="true" id="1b935fee-e953-4ecb-8670-617eec17549e" name="Changes" comment="Respect the unsaved values of cached objects in 'getOrderedByWithLimit'">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/DatabaseUtils/DatabaseObjectTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/tobias/mcutils/shared/DatabaseUtils/DatabaseObjectTable.java" afterDir="false" />
     </list>
@@ -61,13 +61,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1662373282253</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Improve Debug">
-      <created>1662380236153</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1662380236153</updated>
     </task>
     <task id="LOCAL-00004" summary="Add time serializer">
       <created>1662475441192</created>
@@ -405,7 +398,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673202854882</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="Respect the unsaved values of cached objects in 'getOrderedByWithLimit'">
+      <created>1689335307897</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1689335307898</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -420,8 +420,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fix mistakes in StaticClassSerializers" />
-    <MESSAGE value="Add Location support to BukkitStaticClassSerializer" />
     <MESSAGE value="Add random mathematical sign to NumberUtils" />
     <MESSAGE value="Do some things about the caching errors" />
     <MESSAGE value="Fix some caching stuff" />
@@ -445,6 +443,8 @@
     <MESSAGE value="Add BukkitAutoUpdater" />
     <MESSAGE value="(Tried to) Improve the cache" />
     <MESSAGE value="Improved AutoUpdater" />
-    <option name="LAST_COMMIT_MESSAGE" value="Improved AutoUpdater" />
+    <MESSAGE value="DatabaseObjectTable now uses even more dynamic SQL" />
+    <MESSAGE value="Respect the unsaved values of cached objects in 'getOrderedByWithLimit'" />
+    <option name="LAST_COMMIT_MESSAGE" value="Respect the unsaved values of cached objects in 'getOrderedByWithLimit'" />
   </component>
 </project>

@@ -182,7 +182,10 @@ public class DatabaseObjectTable<ContentType> {
         ArrayList cachedObjects = this.cache.stream().filter(a -> a.id.startsWith("MATCHID|||")).map(a -> (ContentType) a.data).collect(Collectors.toCollection(ArrayList::new));
         entries.addAll(cachedObjects);
 
-        //Sort DESC
+        //Remove duplicates
+        entries = entries.stream().distinct().collect(Collectors.toCollection(ArrayList::new));
+
+        //Sort DESCENDING
         entries.sort((a, b) -> {
             try {
                 Object aValue = criteriaField.get(a);
