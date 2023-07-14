@@ -190,6 +190,7 @@ public class DatabaseObjectTable<ContentType> {
             try {
                 Object aValue = criteriaField.get(a);
                 Object bValue = criteriaField.get(b);
+                logger.debug("Comparing §6" + aValue.toString() + "§x vs §6" + bValue.toString());
 
                 if (fields.get(criteriaField) == Long.class) return ((Long)bValue).compareTo(((Long) aValue));
                 else if (fields.get(criteriaField) == Double.class) return ((Double)bValue).compareTo(((Double) aValue));
@@ -197,6 +198,7 @@ public class DatabaseObjectTable<ContentType> {
                 else if (fields.get(criteriaField) == Boolean.class) return ((Boolean)bValue).compareTo(((Boolean) aValue));
                 else if (fields.get(criteriaField) == BigInteger.class) return ((BigInteger)bValue).compareTo(((BigInteger) aValue));
                 else if (fields.get(criteriaField) == BigDecimal.class) return ((BigDecimal)bValue).compareTo(((BigDecimal) aValue));
+                else logger.warn("Failed to compare field with class:" + fields.get(criteriaField).getClass().getName());
             } catch (Exception ex) {
                 logger.warn("Failed to compare and sort cache by criteria:");
                 ex.printStackTrace();
