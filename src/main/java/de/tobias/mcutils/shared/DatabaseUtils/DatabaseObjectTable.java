@@ -171,7 +171,7 @@ public class DatabaseObjectTable<ContentType> {
 
         //Add the TOP 10 from the Database
         try {
-            ResultSet rs = database.query("SELECT `ID` FROM `" + name + "` ORDER BY CAST(`" + criteria.toUpperCase() + "` as NUMERIC) DESC LIMIT " + count + ";");
+            ResultSet rs = database.query("SELECT `ID` FROM `" + name + "` ORDER BY CAST(`" + criteria.toUpperCase() + "` as INTEGER) DESC LIMIT " + count + ";");
             while(rs.next()) entries.add(getByID(rs.getString("ID")));
         } catch (Exception ex) {
             logger.error("Failed to get data from table by criteria:");
