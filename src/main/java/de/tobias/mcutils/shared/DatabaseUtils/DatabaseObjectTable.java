@@ -79,7 +79,7 @@ public class DatabaseObjectTable<ContentType> {
 
     public ArrayList<String> getAllIDsByField(String searchFieldName, Object value) {
         String cachedName = "MATCHFIELDVALUEID|||" + searchFieldName + "|||" + value.toString();
-        Optional<CachedObject> cached = cache.stream().filter((a) -> a.id.equalsIgnoreCase(cachedName)).findAny();
+        Optional<CachedObject> cached = getSafeCache().stream().filter((a) -> a.id.equalsIgnoreCase(cachedName)).findAny();
         if(cached.isPresent()) {
             logger.debug("Took from cache: §6" + cachedName);
             return (ArrayList<String>) cached.get().data;
@@ -113,7 +113,7 @@ public class DatabaseObjectTable<ContentType> {
 
     public ArrayList<ContentType> getAll(Integer limit) {
         String cachedName = "GETALL|||";
-        Optional<CachedObject> cached = cache.stream().filter((a) -> a.id.equalsIgnoreCase(cachedName)).findAny();
+        Optional<CachedObject> cached = getSafeCache().stream().filter((a) -> a.id.equalsIgnoreCase(cachedName)).findAny();
         if(cached.isPresent()) {
             logger.debug("Took from cache: §6" + cachedName);
             return (ArrayList<ContentType>) cached.get().data;
@@ -179,7 +179,7 @@ public class DatabaseObjectTable<ContentType> {
         }
 
         //Add the all from Cache
-        ArrayList cachedObjects = this.cache.stream().filter(a -> a.id.startsWith("MATCHID|||")).map(a -> (ContentType) a.data).collect(Collectors.toCollection(ArrayList::new));
+        ArrayList cachedObjects = getSafeCache().stream().filter(a -> a.id.startsWith("MATCHID|||")).map(a -> (ContentType) a.data).collect(Collectors.toCollection(ArrayList::new));
         entries.addAll(cachedObjects);
 
         //Remove duplicates
@@ -213,7 +213,7 @@ public class DatabaseObjectTable<ContentType> {
 
     public ContentType getByID(String id) {
         String cachedName = "MATCHID|||" + id;
-        Optional<CachedObject> cached = cache.stream().filter((a) -> a.id.equalsIgnoreCase(cachedName)).findAny();
+        Optional<CachedObject> cached = getSafeCache().stream().filter((a) -> a.id.equalsIgnoreCase(cachedName)).findAny();
         if(cached.isPresent()) {
             logger.debug("Took from cache: §6" + cachedName);
             return (ContentType) cached.get().data;
