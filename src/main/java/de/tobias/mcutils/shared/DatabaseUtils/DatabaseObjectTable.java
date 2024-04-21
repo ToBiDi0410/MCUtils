@@ -385,4 +385,8 @@ public class DatabaseObjectTable<ContentType> {
         if(o.getClass() == BigInteger.class) return ((BigInteger) o).longValue() + "";
         return o.toString();
     }
+
+    public ArrayList<CachedObject> getSafeCache() {
+        return cache.stream().collect(Collectors.toCollection(ArrayList::new));
+    }
 }
