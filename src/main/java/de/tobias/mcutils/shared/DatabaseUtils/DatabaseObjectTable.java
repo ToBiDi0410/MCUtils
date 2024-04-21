@@ -14,6 +14,7 @@ import java.math.BigInteger;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.*;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
 
 @SuppressWarnings("unused")
@@ -25,7 +26,7 @@ public class DatabaseObjectTable<ContentType> {
     public HashMap<String, Class> fields = new HashMap<>();
     public AIODatabase database;
     public Logger logger;
-    public ArrayList<CachedObject> cache = new ArrayList<>();
+    public CopyOnWriteArrayList<CachedObject> cache = new CopyOnWriteArrayList<>();
     public HashMap<String, HashMap<String, Object>> byFieldCache = new HashMap<>();
     public boolean enableCaching = true;
 
@@ -386,7 +387,7 @@ public class DatabaseObjectTable<ContentType> {
         return o.toString();
     }
 
-    public ArrayList<CachedObject> getSafeCache() {
-        return cache.stream().collect(Collectors.toCollection(ArrayList::new));
+    public CopyOnWriteArrayList<CachedObject> getSafeCache() {
+        return cache;
     }
 }
